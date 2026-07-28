@@ -14,7 +14,7 @@
   --noir:#0A0A0A; --encre:#141414; --rouge:#FF1D2D; --rouge-sourd:#8F0F14;
   --craie:#F2F0EC; --gris:#7A7A7A;
   --marge:clamp(16px,3.5vw,64px);
-  --maxw:clamp(1080px,84vw,1680px);
+  --maxw:clamp(980px,74vw,1320px);
   --texte-maxw:68ch;
   --display:'PP Neue Machina',system-ui,sans-serif;
   --texte:'Space Grotesk',system-ui,sans-serif;
@@ -163,8 +163,16 @@ main{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--marge)}
 .chiffres span{display:block;margin-top:10px;color:var(--gris);font-size:.92rem;line-height:1.4}
 
 /* ── Visuels ──────────────────────────────────────────────── */
-figure{margin-top:clamp(30px,4vh,56px)}
+/* Par défaut un visuel suit la colonne de texte. Sortir de cette
+   largeur est un choix explicite : .plein, .duo ou .cote.
+   Sans ça, une capture d'écran de téléphone en 1146×2000 s'affichait
+   sur toute la largeur de page et faisait deux écrans de haut. */
+figure{margin-top:clamp(30px,4vh,56px);max-width:var(--texte-maxw)}
 figure img,figure video{width:100%;background:var(--encre)}
+figure img{max-height:76vh;object-fit:contain;object-position:top}
+.plein,.duo figure,.cote figure{max-width:none}
+.plein img{max-height:none;object-fit:cover}
+.duo img,.cote figure img{max-height:58vh}
 figcaption{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--gris);margin-top:12px;
@@ -177,7 +185,7 @@ figcaption{
 }
 .cote > div > p:first-child{margin-top:0}
 .cote figure{margin-top:0}
-.cote figure img{max-height:70vh;object-fit:cover}
+.cote figure img{object-fit:cover}
 
 /* pleine largeur, hors colonne de texte */
 .plein{margin-inline:calc(-1 * var(--marge))}
