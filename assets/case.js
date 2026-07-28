@@ -1,28 +1,5 @@
 /* Commun aux trois pages de case study : localisation, curseur, révélation. */
 
-// ── Localisation ──────────────────────────────────────────────
-const btnLangue = document.getElementById('langue');
-function applique(lang){
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-en]').forEach(el => {
-    if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
-    el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.fr;
-  });
-  btnLangue.textContent = lang === 'en' ? 'FR' : 'EN';
-  btnLangue.setAttribute('aria-label', lang === 'en' ? 'Passer en français' : 'Switch to English');
-  try { localStorage.setItem('folio-lang', lang); } catch(e) {}
-}
-let lang;
-try { lang = localStorage.getItem('folio-lang'); } catch(e) {}
-if (lang !== 'fr' && lang !== 'en') {
-  const dispo = navigator.languages && navigator.languages.length
-    ? navigator.languages : [navigator.language || 'en'];
-  lang = dispo.some(l => l.toLowerCase().startsWith('fr')) ? 'fr' : 'en';
-}
-applique(lang);
-btnLangue.addEventListener('click', () =>
-  applique(document.documentElement.lang === 'en' ? 'fr' : 'en'));
-
 // ── Curseur ───────────────────────────────────────────────────
 const cur = document.getElementById('cur');
 addEventListener('pointermove', e => {
@@ -47,9 +24,16 @@ if (blocs.length) {
     let actif = 0;
     blocs.forEach((b, i) => { if (b.getBoundingClientRect().top <= seuil) actif = i; });
     liens.forEach((a, i) =>
-      i === actif ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
+      i === actif ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
   };
-  addEventListener('scroll', marque, {passive: true});
+  // Un getBoundingClientRect par bloc à chaque événement scroll force un
+  // recalcul de layout synchrone. On se cale sur la frame d'affichage.
+  let planifie = false;
+  addEventListener('scroll', () => {
+    if (planifie) return;
+    planifie = true;
+    requestAnimationFrame(() => { planifie = false; marque(); });
+  }, {passive: true});
   marque();
 }
 
