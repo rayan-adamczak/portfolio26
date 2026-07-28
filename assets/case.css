@@ -16,6 +16,7 @@
   --marge:clamp(16px,3.5vw,64px);
   --maxw:clamp(980px,74vw,1320px);
   --texte-maxw:68ch;
+  --rayon:8px;
   --display:'PP Neue Machina',system-ui,sans-serif;
   --texte:'Space Grotesk',system-ui,sans-serif;
   --mono:'Space Mono',ui-monospace,monospace;
@@ -168,10 +169,10 @@ main{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--marge)}
    Sans ça, une capture d'écran de téléphone en 1146×2000 s'affichait
    sur toute la largeur de page et faisait deux écrans de haut. */
 figure{margin-top:clamp(30px,4vh,56px);max-width:var(--texte-maxw)}
-figure img,figure video{width:100%;background:var(--encre)}
+figure img,figure video{width:100%;background:var(--encre);border-radius:var(--rayon)}
 figure img{max-height:76vh;object-fit:contain;object-position:top}
 .plein,.duo figure,.cote figure{max-width:none}
-.plein img{max-height:none;object-fit:cover}
+.plein img{max-height:none;object-fit:cover;border-radius:0}
 .duo img,.cote figure img{max-height:58vh}
 figcaption{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
@@ -189,7 +190,7 @@ figcaption{
 
 /* pleine largeur, hors colonne de texte */
 .plein{margin-inline:calc(-1 * var(--marge))}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--encre)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .duo figure{margin-top:0}
 
 /* ── Sommaire fixe ────────────────────────────────────────────

@@ -25,6 +25,7 @@
   /* la colonne suit l'écran au lieu de se figer : 1400 à 1440,
      puis elle continue de grandir jusqu'à 2200 sur 4K. */
   --maxw:clamp(1080px,84vw,1680px);
+  --rayon:8px;
   --display:'PP Neue Machina',system-ui,sans-serif;
   --texte:'Space Grotesk',system-ui,sans-serif;
   --mono:'Space Mono',ui-monospace,monospace;
@@ -160,6 +161,7 @@ section{
   transition:background-color .35s var(--ease);
 }
 .portrait{
+  border-radius:var(--rayon);
   flex:0 0 auto;width:min(26vw,420px);aspect-ratio:290/260;
   /* le portrait est légèrement en retrait, puis on « l'éclaire » au survol :
      un gain de luminosité discret, pas un projecteur. */
@@ -367,7 +369,7 @@ section.in .laptop{animation:allumage .9s steps(1,end)}
    Défilement horizontal libre : molette, drag à la souris, ou swipe.
    `scroll-snap` cale chaque vignette sans bloquer le geste. */
 .carrousel{
-  margin-top:40px;display:flex;gap:1px;overflow-x:auto;overflow-y:hidden;
+  margin-top:40px;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;
   scroll-snap-type:x proximity;scrollbar-width:none;
   padding-bottom:2px;cursor:grab;
   /* débord plein bord : le carrousel sort de la colonne, il file vers la droite */
@@ -378,9 +380,11 @@ section.in .laptop{animation:allumage .9s steps(1,end)}
 .vignette{
   flex:0 0 auto;scroll-snap-align:start;
   background:var(--encre);position:relative;user-select:none;
+  border-radius:var(--rayon);overflow:hidden;
 }
 .vignette .cadre{
-  height:clamp(200px,30vh,360px);overflow:hidden;background:var(--noir);
+  height:clamp(260px,44vh,520px);overflow:hidden;background:var(--noir);
+  border-radius:var(--rayon);
 }
 /* Désaturé au repos, couleur au survol : la couleur d'un mockup entre
    toujours en conflit avec le rouge de la DA. On la garde pour le focus. */
@@ -404,7 +408,8 @@ section.in .laptop{animation:allumage .9s steps(1,end)}
   backdrop-filter:blur(8px);
 }
 .loupe[open]{opacity:1;visibility:visible}
-.loupe img{max-width:100%;max-height:82vh;display:block;object-fit:contain}
+.loupe img{max-width:100%;max-height:82vh;display:block;object-fit:contain;
+  border-radius:var(--rayon)}
 .loupe-barre{
   position:absolute;top:clamp(18px,3vw,34px);left:var(--marge);right:var(--marge);
   display:flex;justify-content:space-between;gap:20px;
@@ -765,12 +770,16 @@ document.querySelectorAll('[data-peek]').forEach(el=>{
 // le drag, sinon le défilement se recale à chaque micro-mouvement.
 const car = document.getElementById('carrousel');
 let tire = false, xDepart = 0, scrollDepart = 0;
+// `aDragge` distingue un glissement d'un clic. Sans lui, le pointerup
+// relâché après un drag ouvrait la visionneuse.
+let aDragge = false;
 car.addEventListener('pointerdown', e => {
-  tire = true; xDepart = e.clientX; scrollDepart = car.scrollLeft;
+  tire = true; aDragge = false; xDepart = e.clientX; scrollDepart = car.scrollLeft;
   car.classList.add('drag'); car.setPointerCapture(e.pointerId);
 });
 car.addEventListener('pointermove', e => {
   if (!tire) return;
+  if (Math.abs(e.clientX - xDepart) > 6) aDragge = true;
   car.scrollLeft = scrollDepart - (e.clientX - xDepart);
 });
 const relache = () => { tire = false; car.classList.remove('drag'); };
@@ -839,11 +848,11 @@ function ouvre(i){
 }
 const ferme = () => loupe.removeAttribute('open');
 
+// `setPointerCapture` sur le carrousel redirige pointerup vers lui :
+// l'écouteur posé sur la vignette ne se déclenchait jamais. On écoute
+// donc `click`, qui remonte normalement depuis la vignette.
 vignettes.forEach((v, i) => {
-  v.addEventListener('pointerup', e => {
-    if (Math.abs(e.clientX - xDepart) > 6) return;   // c'était un drag
-    ouvre(i);
-  });
+  v.addEventListener('click', () => { if (!aDragge) ouvre(i); });
 });
 document.getElementById('loupe-fermer').addEventListener('click', ferme);
 document.getElementById('loupe-prec').addEventListener('click', () => ouvre(indexCourant - 1));
