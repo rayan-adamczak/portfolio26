@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parking Access — Rayan Adamczak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/case.css">
+</head>
+<body>
+<div class="grain"></div>
+<div class="cur" id="cur"></div>
+
+<a class="logo" href="index.html" aria-label="Accueil"><span class="pupille"></span></a>
+<div class="status">
+  <span class="dot"></span><span>Electra — 2024</span>
+  <button class="langue" id="langue" type="button">EN</button>
+</div>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <a href="#s01"><span class="n">01</span><span data-en="Context">Contexte</span></a>
+  <a href="#s02"><span class="n">02</span><span data-en="Problem">Problème</span></a>
+  <a href="#s03"><span class="n">03</span><span data-en="Research">Recherche</span></a>
+  <a href="#s04"><span class="n">04</span><span data-en="Decisions">Décisions</span></a>
+  <a href="#s05"><span class="n">05</span><span data-en="Delivery">Livraison</span></a>
+  <a href="#s06"><span class="n">06</span><span data-en="Testing">Tests</span></a>
+  <a href="#s07"><span class="n">07</span><span data-en="Outcome">Résultat</span></a>
+</nav>
+
+<main>
+
+<header class="entete">
+  <div class="label" data-en="(001) — Case study">(001) — Case study</div>
+  <h1>Parking<br>Access</h1>
+  <p class="chapo" data-en="Letting drivers leave a paid underground car park without paying, and without a single new piece of hardware.">Faire sortir un conducteur d'un parking souterrain payant sans qu'il paie, et sans installer le moindre matériel supplémentaire.</p>
+
+  <dl class="fiche">
+    <div><dt data-en="Company">Entreprise</dt><dd>Electra</dd></div>
+    <div><dt data-en="Duration">Durée</dt><dd data-en="4 months">4 mois</dd></div>
+    <div><dt data-en="Role">Rôle</dt><dd data-en="Product Designer — sole designer on the Charge XP squad">Product Designer — seul designer de la squad Charge XP</dd></div>
+    <div><dt data-en="Scope">Périmètre</dt><dd data-en="User interviews · User testing · Mockups · UX &amp; UI">Entretiens · Tests utilisateurs · Maquettes · UX &amp; UI</dd></div>
+    <div><dt data-en="Environment">Environnement</dt><dd>Mobile · App · B2C</dd></div>
+  </dl>
+</header>
+
+<section class="bloc" id="s01">
+  <div class="label" data-en="01 — Context">01 — Contexte</div>
+  <h2 data-en="A discount nobody could see">Une remise que personne ne voyait</h2>
+  <p data-en="Some Electra charging stations sit inside paid underground car parks. To offset that cost, Electra covers the parking ticket for its users. The mechanism existed — but it was invisible, and it leaked.">Certaines bornes Electra sont installées dans des parkings souterrains payants. Pour compenser ce coût, Electra prend le ticket à sa charge. Le mécanisme existait — mais il était invisible, et il fuyait.</p>
+  <p data-en="Two constraints framed everything: the car park operators wanted as little involvement as possible — attracting drivers is Electra's job, not theirs — and underground, there is often no mobile network at all.">Deux contraintes cadraient tout : les exploitants de parkings voulaient s'impliquer le moins possible — attirer les conducteurs, c'est le métier d'Electra, pas le leur — et en sous-sol, il n'y a souvent aucun réseau mobile.</p>
+  <figure class="plein">
+    <img src="assets/cases/parking-access/cover.png" alt="Parking Access" loading="lazy">
+  </figure>
+</section>
+
+<section class="bloc" id="s02">
+  <div class="label" data-en="02 — Problem">02 — Problème</div>
+  <h2 data-en="Two leaks, one blind spot">Deux fuites, un angle mort</h2>
+  <p data-en="Working with the data team on Metabase, one number reframed the whole project:">En creusant avec l'équipe data sur Metabase, un chiffre a recadré tout le projet :</p>
+  <div class="chiffres">
+    <div><b>50 %</b><span data-en="of users at paid car parks were charging without the app">des utilisateurs de parkings payants rechargeaient sans passer par l'app</span></div>
+    <div><b>40 %</b><span data-en="were charging with the discount applied">rechargeaient avec la remise appliquée</span></div>
+  </div>
+  <ul>
+    <li data-en="No reliable way to confirm someone was actually charging when they bypassed the app — they could just plug in.">Aucun moyen fiable de confirmer qu'une personne rechargeait vraiment si elle contournait l'app — elle pouvait se brancher directement.</li>
+    <li data-en="A loophole let anyone enter for free through the web app without ever charging.">Une faille permettait d'entrer gratuitement via la web-app sans jamais recharger.</li>
+    <li data-en="Paying at the exit machine felt like a betrayal: users thought the service covered it.">Payer à la borne de sortie était vécu comme une trahison : les utilisateurs pensaient que le service couvrait ça.</li>
+  </ul>
+  <div class="encadre">
+    <div class="label" data-en="Decision">Décision</div>
+    <p data-en="Focus on app users. Their session is trackable in real time, which closes the loophole — and it turns the feature into a reason to use the app rather than plugging in on the fly.">Se concentrer sur les utilisateurs de l'app. Leur session est traçable en temps réel, ce qui ferme la faille — et transforme la fonctionnalité en argument pour utiliser l'app plutôt que de se brancher à la volée.</p>
+  </div>
+</section>
+
+<section class="bloc" id="s03">
+  <div class="label" data-en="03 — Research">03 — Recherche</div>
+  <h2 data-en="An afternoon at a station">Un après-midi en station</h2>
+  <p data-en="I met three groups: car park owners, their PMS providers, and drivers. With my PM, I spent an afternoon at a station running interviews and putting the concept in front of real users.">J'ai rencontré trois groupes : les propriétaires de parkings, leurs prestataires PMS, et les conducteurs. Avec mon PM, j'ai passé un après-midi en station à mener des entretiens et à confronter le concept à de vrais utilisateurs.</p>
+  <div class="cote">
+    <div>
+      <p data-en="The operators' position was blunt: centralise every interaction through their PMS, and keep them out of it. The drivers' position was simpler still — they did not want to think about the car park at all.">La position des exploitants était nette : centraliser toutes les interactions via leur PMS, et ne pas les impliquer. Celle des conducteurs était encore plus simple — ils ne voulaient pas avoir à penser au parking.</p>
+      <p data-en="What came out of that afternoon was not a feature request. It was a constraint: whatever we built had to be invisible to the operator and thoughtless for the driver.">Ce qui est ressorti de cet après-midi n'était pas une demande de fonctionnalité. C'était une contrainte : ce qu'on construirait devait être invisible pour l'exploitant et irréfléchi pour le conducteur.</p>
+    </div>
+    <figure>
+      <img src="assets/cases/parking-access/terrain.jpg" alt="Test terrain sur une borne Electra" loading="lazy">
+      <figcaption data-en="Field testing the QR code on the operator's real barriers">Test terrain du QR code sur les barrières réelles de l'exploitant</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="bloc" id="s04">
+  <div class="label" data-en="04 — Decisions">04 — Décisions</div>
+  <h2 data-en="Why a QR code">Pourquoi un QR code</h2>
+  <p data-en="We explored licence plate recognition, a second printed ticket, and physical badges. The QR code won on one argument: drivers already stop at a barrier to take or scan something. The gesture exists — we only had to change what gets scanned.">Nous avons exploré la reconnaissance de plaque, un second ticket imprimé, et des badges physiques. Le QR code l'a emporté sur un seul argument : le conducteur s'arrête déjà à une barrière pour prendre ou scanner quelque chose. Le geste existe — il suffisait de changer ce qu'on y scanne.</p>
+  <div class="encadre">
+    <div class="label" data-en="Trade-off">Arbitrage</div>
+    <p data-en="Scanning a QR code at a barrier was not a widely known behaviour in 2024. That put the design weight on reassurance, not on the flow itself — the flow was already familiar.">Scanner un QR code à une barrière n'était pas un comportement répandu en 2024. Le poids du design est donc allé sur la réassurance, pas sur le parcours lui-même — celui-ci était déjà familier.</p>
+  </div>
+  <p data-en="The new flow slots into the existing one without disturbing it. Everything stays the same, except that when charging ends the user receives a QR code that opens the exit barrier. No payment. It replaces the second ticket a machine would normally hand over.">Le nouveau parcours s'insère dans l'existant sans le perturber. Tout reste identique, sauf qu'à la fin de la recharge l'utilisateur reçoit un QR code qui ouvre la barrière de sortie. Aucun paiement. Il remplace le second ticket qu'une borne aurait normalement délivré.</p>
+</section>
+
+<section class="bloc" id="s05">
+  <div class="label" data-en="05 — Delivery">05 — Livraison</div>
+  <h2 data-en="Two reusable kits">Deux kits réutilisables</h2>
+  <p data-en="The project landed during the app's rebranding, so I designed for reuse rather than for this feature alone. Three Figma pages: a Booking Kit, a Checkout Kit, and the full journey.">Le projet est tombé pendant le rebranding de l'app : j'ai donc conçu pour la réutilisation plutôt que pour cette seule fonctionnalité. Trois pages Figma : Booking Kit, Checkout Kit, et le parcours complet.</p>
+  <div class="duo">
+    <figure>
+      <img src="assets/cases/parking-access/mockups-1.png" alt="Booking kit" loading="lazy">
+      <figcaption data-en="Booking kit — location, assigned spot, access instructions">Booking kit — localisation, place assignée, instructions d'accès</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/cases/parking-access/mockups-2.png" alt="Checkout kit" loading="lazy">
+      <figcaption data-en="Checkout kit — same layout, charging details, access still reachable">Checkout kit — même gabarit, détails de recharge, accès toujours accessible</figcaption>
+    </figure>
+  </div>
+  <p data-en="The two kits share one layout. Booking shows where to go and what to expect; checkout reuses the exact same frame to show duration, cost and receipt. Reusing the layout meant users learned the screen once.">Les deux kits partagent un seul gabarit. Le booking indique où aller et à quoi s'attendre ; le checkout réutilise exactement le même cadre pour afficher durée, coût et reçu. Réutiliser le gabarit, c'est n'apprendre l'écran qu'une fois.</p>
+  <div class="encadre">
+    <div class="label" data-en="No-network case">Cas sans réseau</div>
+    <p data-en="The QR code is sent by SMS on top of the in-app notification. If the network drops underground — which it does — the code is already on the device.">Le QR code est envoyé par SMS en plus de la notification in-app. Si le réseau tombe en sous-sol — et c'est le cas — le code est déjà sur le téléphone.</p>
+  </div>
+  <figure class="plein">
+    <img src="assets/cases/parking-access/mockups-3.png" alt="Parcours complet" loading="lazy">
+    <figcaption data-en="Full journey — from booking to barrier exit">Parcours complet — de la réservation à la sortie de barrière</figcaption>
+  </figure>
+</section>
+
+<section class="bloc" id="s06">
+  <div class="label" data-en="06 — Testing">06 — Tests</div>
+  <h2 data-en="On real machines, with real users">Sur de vraies machines, avec de vrais utilisateurs</h2>
+  <p data-en="With my PM I went to the partner's offices and tested the QR screen on their actual scanners, across several sizes, to guarantee readability. Then I recruited testers with an in-app pop-up targeted only at users who had visited these stations, followed by a screening survey to keep the panel varied.">Avec mon PM, je suis allé dans les locaux du partenaire tester l'écran QR sur leurs scanners réels, à plusieurs tailles, pour garantir la lisibilité. J'ai ensuite recruté des testeurs via un pop-up in-app ciblé uniquement sur les utilisateurs passés par ces stations, puis un questionnaire pour garder un panel varié.</p>
+  <p data-en="Apart from minor copy confusion, testers understood the feature and what was expected of them. They liked the QR code precisely because it matched a behaviour they already had.">Hors quelques confusions mineures de copy, les testeurs ont compris la fonctionnalité et ce qu'on attendait d'eux. Ils ont apprécié le QR code justement parce qu'il collait à un comportement qu'ils avaient déjà.</p>
+</section>
+
+<section class="bloc" id="s07">
+  <div class="label" data-en="07 — Outcome">07 — Résultat</div>
+  <h2 data-en="Shipped, and reusable">Livré, et réutilisable</h2>
+  <p data-en="Users exit a paid car park without paying and without thinking about it. The loophole is closed, the operators had nothing to install, and the two kits went on to serve screens well beyond this feature.">L'utilisateur sort d'un parking payant sans payer et sans y penser. La faille est fermée, les exploitants n'ont rien eu à installer, et les deux kits ont ensuite servi à des écrans bien au-delà de cette fonctionnalité.</p>
+  <div class="encadre">
+    <div class="label" data-en="What I would do next">Ce que je ferais ensuite</div>
+    <p data-en="Make the checkout smarter: surface the QR code automatically when the screen is dismissed, and let it be added to the wallet app. The exit is the one moment where a user must not have to look for anything.">Rendre le checkout plus intelligent : faire apparaître le QR code automatiquement à la fermeture de l'écran, et permettre son ajout au wallet. La sortie est le seul moment où l'utilisateur ne doit rien avoir à chercher.</p>
+  </div>
+</section>
+
+<a class="suivant" href="case-retro.html">
+  <div class="label" data-en="Next case study">Projet suivant</div>
+  <h3>Retro</h3>
+</a>
+
+</main>
+
+<section class="contact">
+  <div class="label" data-en="Contact">Contact</div>
+  <h2 data-en="Let's talk&lt;br&gt;about your product.">Parlons<br>de votre produit.</h2>
+  <div class="liens">
+    <a href="mailto:rayan.adamczak@gmail.com">rayan.adamczak@gmail.com</a>
+    <a href="https://www.linkedin.com/in/rayan-adamczak/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<script src="assets/case.js"></script>
+</body>
+</html>

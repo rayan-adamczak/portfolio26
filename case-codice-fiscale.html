@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codice Fiscale — Rayan Adamczak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/case.css">
+</head>
+<body>
+<div class="grain"></div>
+<div class="cur" id="cur"></div>
+
+<a class="logo" href="index.html" aria-label="Accueil"><span class="pupille"></span></a>
+<div class="status">
+  <span class="dot"></span><span>Electra — 2023</span>
+  <button class="langue" id="langue" type="button">EN</button>
+</div>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <a href="#s01"><span class="n">01</span><span data-en="Context">Contexte</span></a>
+  <a href="#s02"><span class="n">02</span><span data-en="Challenge">Défi</span></a>
+  <a href="#s03"><span class="n">03</span><span data-en="Research">Recherche</span></a>
+  <a href="#s04"><span class="n">04</span><span data-en="Decisions">Décisions</span></a>
+  <a href="#s05"><span class="n">05</span><span data-en="Delivery">Livraison</span></a>
+  <a href="#s06"><span class="n">06</span><span data-en="Outcome">Résultat</span></a>
+</nav>
+
+<main>
+
+<header class="entete">
+  <div class="label" data-en="(003) — Case study">(003) — Case study</div>
+  <h1>Codice<br>Fiscale</h1>
+  <p class="chapo" data-en="A legal requirement turned into an excuse to fix an account model that was never future-proof. It opened the Italian market.">Une obligation légale transformée en prétexte pour réparer un modèle de compte qui n'avait jamais été pensé pour durer. Elle a ouvert le marché italien.</p>
+
+  <dl class="fiche">
+    <div><dt data-en="Company">Entreprise</dt><dd>Electra</dd></div>
+    <div><dt data-en="Duration">Durée</dt><dd data-en="2 months">2 mois</dd></div>
+    <div><dt data-en="Role">Rôle</dt><dd data-en="Product Designer — with the legal and Italian teams">Product Designer — avec les équipes juridique et italienne</dd></div>
+    <div><dt data-en="Scope">Périmètre</dt><dd data-en="User research · Mockups · UX &amp; UI">Recherche utilisateur · Maquettes · UX &amp; UI</dd></div>
+    <div><dt data-en="Environment">Environnement</dt><dd>Mobile · App · B2C + B2B</dd></div>
+  </dl>
+</header>
+
+<section class="bloc" id="s01">
+  <div class="label" data-en="01 — Context">01 — Contexte</div>
+  <h2 data-en="No code, no invoice, no market">Pas de code, pas de facture, pas de marché</h2>
+  <p data-en="Electra was expanding its network into Italy. One legal requirement blocked the door: the codice fiscale. Italian tax law makes it mandatory for every service used by Italian citizens, and it must be attached to every payment for the invoice to be valid.">Electra étendait son réseau en Italie. Une obligation légale bloquait la porte : le codice fiscale. Le droit fiscal italien le rend obligatoire pour tout service utilisé par un citoyen italien, et il doit être rattaché à chaque paiement pour que la facture soit valide.</p>
+  <p data-en="Without it, transactions simply do not meet the country's standards. There was no design workaround available — only a design response.">Sans lui, les transactions ne respectent tout simplement pas les standards du pays. Il n'existait aucun contournement possible par le design — seulement une réponse de design.</p>
+  <figure class="plein">
+    <img src="assets/cases/codice-fiscale/cover.png" alt="Codice Fiscale" loading="lazy">
+  </figure>
+</section>
+
+<section class="bloc" id="s02">
+  <div class="label" data-en="02 — Challenge">02 — Défi</div>
+  <h2 data-en="Designing inside someone else's rules">Concevoir dans les règles d'un autre</h2>
+  <p data-en="This project put me in direct collaboration with the legal team and the Italian team. Navigating legal constraints is already hard; doing it in a foreign regulatory landscape, without being a legal expert myself, meant leaning on specialists to close the knowledge gap before drawing anything.">Ce projet m'a mis en collaboration directe avec l'équipe juridique et l'équipe italienne. Naviguer dans des contraintes légales est déjà difficile ; le faire dans le cadre réglementaire d'un autre pays, sans être juriste, imposait de s'appuyer sur les spécialistes pour combler l'écart de connaissance avant de dessiner quoi que ce soit.</p>
+  <div class="encadre">
+    <div class="label" data-en="Hard constraint">Contrainte dure</div>
+    <p data-en="A user only receives an invoice if the codice fiscale was submitted before the request. Miss it, and they wait until their next charge. Italian tax regulation, entirely outside our control — so the design had to make sure the moment is never missed.">L'utilisateur ne reçoit sa facture que si le codice fiscale a été renseigné avant la demande. S'il le rate, il attend la recharge suivante. Réglementation fiscale italienne, totalement hors de notre contrôle — le design devait donc garantir que ce moment ne soit jamais raté.</p>
+  </div>
+  <p data-en="One scoping decision mattered: the requirement applies only to Italian users charging in Italy. Everyone else must never see this step. That constraint shaped where the field could live.">Une décision de cadrage comptait : l'obligation ne s'applique qu'aux utilisateurs italiens rechargeant en Italie. Tous les autres ne doivent jamais voir cette étape. Cette contrainte a déterminé où le champ pouvait vivre.</p>
+</section>
+
+<section class="bloc" id="s03">
+  <div class="label" data-en="03 — Research">03 — Recherche</div>
+  <h2 data-en="Where others ask for it">Où les autres le demandent</h2>
+  <p data-en="After the kick-off with our Italian country manager, I benchmarked platforms that already collect a fiscal code. The questions were narrow and practical: when do they ask for it, and how is the input shaped — a plain field, a guided entry, a pre-filled template?">Après le kick-off avec notre country manager italien, j'ai benchmarké les plateformes qui collectent déjà un code fiscal. Les questions étaient étroites et pratiques : à quel moment le demandent-elles, et comment est formaté le champ — saisie libre, guidée, gabarit pré-rempli ?</p>
+  <p data-en="The benchmark surfaced a second problem I had not been briefed on. Professional users also need to provide their code alongside their company details — and our B2B flow stored all of that in a single field.">Le benchmark a fait remonter un second problème pour lequel je n'avais pas été briefé. Les utilisateurs professionnels doivent aussi fournir leur code avec les informations de leur société — et notre parcours B2B stockait tout ça dans un seul champ.</p>
+  <div class="encadre">
+    <div class="label" data-en="Reframing">Recadrage</div>
+    <p data-en="I treated the legal requirement as an opening. The account profile was ambiguous long before Italy — you could not tell a personal account from a business one. Splitting the B2B data into separate fields was necessary for invoicing anyway; it also fixed the ambiguity.">J'ai traité l'obligation légale comme une ouverture. Le profil de compte était ambigu bien avant l'Italie — on ne distinguait pas un compte personnel d'un compte professionnel. Éclater les données B2B en champs séparés était de toute façon nécessaire pour la facturation ; ça réglait aussi l'ambiguïté.</p>
+  </div>
+</section>
+
+<section class="bloc" id="s04">
+  <div class="label" data-en="04 — Decisions">04 — Décisions</div>
+  <h2 data-en="Three doors, not one">Trois portes, pas une</h2>
+  <p data-en="I mapped three entry points for collecting the code: one during onboarding for new users, and two more for existing users who would have to provide it later. Designing for both populations was not optional — the Italian network already had users.">J'ai cartographié trois points d'entrée pour collecter le code : un pendant l'onboarding des nouveaux utilisateurs, et deux autres pour les utilisateurs existants devant le fournir plus tard. Concevoir pour les deux populations n'était pas optionnel — le réseau italien avait déjà des utilisateurs.</p>
+  <div class="encadre">
+    <div class="label" data-en="What I removed">Ce que j'ai retiré</div>
+    <p data-en="I pulled the field out of sign-up. It sat outside the core scope and lengthened the one flow where friction costs the most. The profile page carries it instead — with a status indicator and an orange dot signalling an action is required.">J'ai retiré le champ de l'inscription. Il sortait du périmètre central et allongeait le seul parcours où la friction coûte le plus cher. C'est la page profil qui le porte — avec un indicateur de statut et une pastille orange signalant qu'une action est attendue.</p>
+  </div>
+  <div class="duo">
+    <figure>
+      <img src="assets/cases/codice-fiscale/mockups-1.png" alt="Page profil" loading="lazy">
+      <figcaption data-en="Profile — account type made explicit, with a switch to B2B">Profil — le type de compte devient explicite, avec bascule vers B2B</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/cases/codice-fiscale/mockups-2.png" alt="Détails de facturation" loading="lazy">
+      <figcaption data-en="Invoicing details — where the codice fiscale is entered">Détails de facturation — où le codice fiscale se saisit</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="bloc" id="s05">
+  <div class="label" data-en="05 — Delivery">05 — Livraison</div>
+  <h2 data-en="Design System, not invention">Design System, pas invention</h2>
+  <p data-en="There were few design iterations here, and that was the right outcome. A legally mandated feature with strict guidelines does not want originality — it wants inputs, forms, and heavy reuse of existing Design System components. The work was in the routing, not the pixels.">Il y a eu peu d'itérations de design ici, et c'était le bon résultat. Une fonctionnalité imposée par la loi, avec des règles strictes, ne demande pas d'originalité — elle demande des champs, des formulaires, et une forte réutilisation des composants du Design System. Le travail était dans le routage, pas dans les pixels.</p>
+  <p data-en="The most critical touchpoint turned out to be elsewhere: in Charge History and Invoices, a banner warns users that invoicing details are missing and links straight to the page. That is where someone realises they need an invoice — so that is where the reminder belongs.">Le point de contact le plus critique s'est révélé ailleurs : dans l'historique de recharge et les factures, une bannière prévient que les informations de facturation manquent et renvoie directement à la page. C'est là qu'on réalise qu'on a besoin d'une facture — c'est donc là que le rappel doit se trouver.</p>
+  <figure class="plein">
+    <img src="assets/cases/codice-fiscale/mockups-3.png" alt="Bannière dans l'historique de recharge" loading="lazy">
+    <figcaption data-en="Charge history — the banner catches the user at the moment of need">Historique de recharge — la bannière attrape l'utilisateur au moment du besoin</figcaption>
+  </figure>
+</section>
+
+<section class="bloc" id="s06">
+  <div class="label" data-en="06 — Outcome">06 — Résultat</div>
+  <h2 data-en="The Italian market opened">Le marché italien s'est ouvert</h2>
+  <p data-en="Thanks to the work of my squad and the B2B squad, Italy is officially open to Electra. The compliance requirement was met without adding a step to sign-up, and Italian users get valid invoices.">Grâce au travail de ma squad et de la squad B2B, l'Italie est officiellement ouverte à Electra. L'obligation de conformité est remplie sans ajouter d'étape à l'inscription, et les utilisateurs italiens reçoivent des factures valides.</p>
+  <p data-en="The lasting part is the account model. We found structural gaps and a tech setup that was not future-proof, and rethought the account management logic with the B2B team. That groundwork outlives the feature that triggered it.">Ce qui reste, c'est le modèle de compte. Nous avons trouvé des manques structurels et une architecture technique qui n'était pas pensée pour durer, et repensé la logique de gestion de compte avec l'équipe B2B. Ce socle survivra à la fonctionnalité qui l'a déclenché.</p>
+  <div class="encadre">
+    <div class="label" data-en="What I take from it">Ce que j'en retire</div>
+    <p data-en="A legal constraint is a brief with no room to negotiate the what — which frees all the attention for the where and the when. Most of the value here came from placing three touchpoints correctly, not from designing a form.">Une contrainte légale est un brief où le « quoi » ne se négocie pas — ce qui libère toute l'attention pour le « où » et le « quand ». L'essentiel de la valeur ici vient d'avoir placé trois points de contact au bon endroit, pas d'avoir dessiné un formulaire.</p>
+  </div>
+</section>
+
+<a class="suivant" href="case-parking-access.html">
+  <div class="label" data-en="Next case study">Projet suivant</div>
+  <h3>Parking Access</h3>
+</a>
+
+</main>
+
+<section class="contact">
+  <div class="label" data-en="Contact">Contact</div>
+  <h2 data-en="Let's talk&lt;br&gt;about your product.">Parlons<br>de votre produit.</h2>
+  <div class="liens">
+    <a href="mailto:rayan.adamczak@gmail.com">rayan.adamczak@gmail.com</a>
+    <a href="https://www.linkedin.com/in/rayan-adamczak/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<script src="assets/case.js"></script>
+</body>
+</html>

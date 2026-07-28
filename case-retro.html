@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retro — Rayan Adamczak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/case.css">
+</head>
+<body>
+<div class="grain"></div>
+<div class="cur" id="cur"></div>
+
+<a class="logo" href="index.html" aria-label="Accueil"><span class="pupille"></span></a>
+<div class="status">
+  <span class="dot"></span><span>Electra — 2024</span>
+  <button class="langue" id="langue" type="button">EN</button>
+</div>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <a href="#s01"><span class="n">01</span><span data-en="Context">Contexte</span></a>
+  <a href="#s02"><span class="n">02</span><span data-en="Constraint">Contrainte</span></a>
+  <a href="#s03"><span class="n">03</span><span data-en="Framing">Cadrage</span></a>
+  <a href="#s04"><span class="n">04</span><span data-en="Design">Design</span></a>
+  <a href="#s05"><span class="n">05</span><span data-en="Measuring">Mesure</span></a>
+  <a href="#s06"><span class="n">06</span><span data-en="Outcome">Résultat</span></a>
+</nav>
+
+<main>
+
+<header class="entete">
+  <div class="label" data-en="(002) — Case study">(002) — Case study</div>
+  <h1>Retro</h1>
+  <p class="chapo" data-en="A Spotify Wrapped for EV charging, pitched at a hackathon and shipped three weeks later. 33 % of the target audience opened it.">Un Spotify Wrapped de la recharge électrique, proposé pendant un hackathon et livré trois semaines plus tard. 33 % de l'audience visée l'a ouvert.</p>
+
+  <dl class="fiche">
+    <div><dt data-en="Company">Entreprise</dt><dd>Electra</dd></div>
+    <div><dt data-en="Duration">Durée</dt><dd data-en="3 weeks">3 semaines</dd></div>
+    <div><dt data-en="Role">Rôle</dt><dd data-en="Idea, design, motion, analytics setup">Idée, design, motion, mise en place analytics</dd></div>
+    <div><dt data-en="Scope">Périmètre</dt><dd data-en="Mockups · Motion · Analytics · Communication">Maquettes · Motion · Analytics · Communication</dd></div>
+    <div><dt data-en="Environment">Environnement</dt><dd>Mobile · B2C</dd></div>
+  </dl>
+</header>
+
+<section class="bloc" id="s01">
+  <div class="label" data-en="01 — Context">01 — Contexte</div>
+  <h2 data-en="An idea pitched at a hackathon">Une idée lancée en hackathon</h2>
+  <p data-en="I brought the idea to an internal hackathon: adapt Spotify Wrapped to Electra. Give users a delightful, shareable read on their own year of charging — and give the community something to talk about.">J'ai apporté l'idée lors d'un hackathon interne : adapter Spotify Wrapped à Electra. Offrir aux utilisateurs une lecture plaisante et partageable de leur année de recharge — et donner à la communauté quelque chose à se raconter.</p>
+  <p data-en="The bet rested on a read of the audience: Electra users are tech-minded, most know Wrapped, and EV drivers already behave like a community — they gather in groups, compare cars, swap experiences.">Le pari reposait sur une lecture de l'audience : les utilisateurs Electra sont technophiles, la plupart connaissent Wrapped, et les conducteurs de véhicules électriques fonctionnent déjà comme une communauté — ils se regroupent, comparent leurs voitures, échangent leurs expériences.</p>
+  <figure class="plein">
+    <img src="assets/cases/retro/cover.png" alt="Electra Retro" loading="lazy">
+  </figure>
+</section>
+
+<section class="bloc" id="s02">
+  <div class="label" data-en="02 — Constraint">02 — Contrainte</div>
+  <h2 data-en="One week to prove it">Une semaine pour le prouver</h2>
+  <p data-en="The hackathon gave us a single week to research, design, build and test. That is not enough to ship — it is exactly enough to produce a proof of concept convincing enough to buy more time. Which is what happened: leadership then granted two additional weeks.">Le hackathon nous donnait une seule semaine pour rechercher, concevoir, développer et tester. Ce n'est pas assez pour livrer — c'est exactement assez pour produire une preuve de concept assez convaincante pour obtenir du temps. C'est ce qui s'est passé : la direction a ensuite accordé deux semaines de plus.</p>
+  <div class="encadre">
+    <div class="label" data-en="Decision">Décision</div>
+    <p data-en="Ship it as a standalone web app rather than native in the app. Same experience for the user, far faster for the developers — and the deadline was the real constraint.">Livrer en web-app autonome plutôt qu'en natif dans l'app. Expérience identique pour l'utilisateur, bien plus rapide pour les développeurs — et la deadline était la vraie contrainte.</p>
+  </div>
+</section>
+
+<section class="bloc" id="s03">
+  <div class="label" data-en="03 — Framing">03 — Cadrage</div>
+  <h2 data-en="Fun facts, not surveillance">Des faits amusants, pas de la surveillance</h2>
+  <p data-en="We listed every piece of data we held on users, then filtered it through one rule: each screen must feel like a gift, never like proof that we track every move. That rule killed several otherwise interesting stats.">Nous avons listé toutes les données dont nous disposions, puis les avons filtrées avec une seule règle : chaque écran doit se lire comme un cadeau, jamais comme la preuve qu'on suit chaque déplacement. Cette règle a éliminé plusieurs statistiques pourtant intéressantes.</p>
+  <p data-en="The structure landed on four parts: a welcome screen, five screens of yearly charging stats, two on the stations visited, and two closing screens that thank the user and recap the key numbers.">La structure s'est arrêtée sur quatre parties : un écran d'accueil, cinq écrans de statistiques annuelles, deux sur les stations visitées, et deux écrans de clôture qui remercient l'utilisateur et récapitulent les chiffres clés.</p>
+  <div class="encadre">
+    <div class="label" data-en="Cut">Coupé</div>
+    <p data-en="User profiles and deeper personalisation were designed, then dropped. Too complex to build in the time we had — and a half-built personalisation reads worse than none.">Les profils utilisateurs et une personnalisation plus poussée ont été conçus, puis abandonnés. Trop complexes à développer dans le temps imparti — et une personnalisation à moitié faite se lit plus mal que pas de personnalisation du tout.</p>
+  </div>
+</section>
+
+<section class="bloc" id="s04">
+  <div class="label" data-en="04 — Design">04 — Design</div>
+  <h2 data-en="A story, tapped through">Une story, qu'on fait défiler</h2>
+  <p data-en="Retro behaves like an Instagram story: each screen advances on its own after a short delay, or on tap. The format was the point — it is a rhythm users already know, so nobody has to learn a navigation.">Retro se comporte comme une story Instagram : chaque écran avance seul après un court délai, ou au tap. Le format était le sujet — c'est un rythme que les utilisateurs connaissent déjà, personne n'a à apprendre une navigation.</p>
+  <div class="duo">
+    <figure>
+      <img src="assets/cases/retro/mockups-1.png" alt="Écrans de la story" loading="lazy">
+      <figcaption data-en="Welcome and yearly stats">Accueil et statistiques annuelles</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/cases/retro/mockups-2.png" alt="Statistiques" loading="lazy">
+      <figcaption data-en="Stations visited and personal records">Stations visitées et records personnels</figcaption>
+    </figure>
+  </div>
+  <p data-en="In weeks two and three the team was two people: one developer and me. He cleaned up the existing screens while I designed the animations. That forced a trade-off — animation cost performance, so screens had to go. I cut screens rather than water down the motion, because the motion was what made it feel like an event.">Sur les semaines deux et trois, l'équipe était à deux : un développeur et moi. Il nettoyait les écrans existants pendant que je concevais les animations. Ça a imposé un arbitrage — l'animation coûtait en performance, il fallait donc réduire le nombre d'écrans. J'ai coupé des écrans plutôt que d'affadir le motion, parce que c'est le motion qui en faisait un événement.</p>
+  <figure>
+    <img src="assets/cases/retro/icone.png" alt="Icône Retro" loading="lazy">
+    <figcaption data-en="The icon: a side-mirror — «rétroviseur» and «rétrospective» in one object, built on the rebranding rules">L'icône : un rétroviseur — « rétroviseur » et « rétrospective » dans un seul objet, construit selon les règles du rebranding</figcaption>
+  </figure>
+</section>
+
+<section class="bloc" id="s05">
+  <div class="label" data-en="05 — Measuring">05 — Mesure</div>
+  <h2 data-en="Defining who gets it">Définir qui le reçoit</h2>
+  <p data-en="With the data team and my squad PM we defined the audience: recurring users with a minimum number of charges in a month — around 3 000 people. I set up the MixPanel tracking myself so we could see how many opened it and how far they went.">Avec l'équipe data et le PM de ma squad, nous avons défini l'audience : les utilisateurs récurrents ayant effectué un minimum de recharges sur un mois — environ 3 000 personnes. J'ai configuré le tracking MixPanel moi-même pour mesurer combien l'ouvraient et jusqu'où ils allaient.</p>
+  <p data-en="Then I made it visible: a seasonal splashscreen and app icon, in-app messages, and a time-limited home banner. Beyond the app, I worked with marketing to push it on Facebook and LinkedIn.">Ensuite, le rendre visible : splashscreen et icône d'app saisonniers, messages in-app, et une bannière d'accueil limitée dans le temps. Hors app, j'ai travaillé avec le marketing pour le pousser sur Facebook et LinkedIn.</p>
+  <figure class="plein">
+    <img src="assets/cases/retro/mockups-3.png" alt="Récapitulatif final" loading="lazy">
+    <figcaption data-en="Closing recap — the shareable screen">Récapitulatif final — l'écran partageable</figcaption>
+  </figure>
+</section>
+
+<section class="bloc" id="s06">
+  <div class="label" data-en="06 — Outcome">06 — Résultat</div>
+  <h2 data-en="One in three opened it">Un sur trois l'a ouvert</h2>
+  <div class="chiffres">
+    <div><b>1 000+</b><span data-en="users opened their personalised Retro">utilisateurs ont ouvert leur Retro personnalisé</span></div>
+    <div><b>33 %</b><span data-en="adoption rate on the 3 000 eligible users">de taux d'adoption sur les 3 000 utilisateurs éligibles</span></div>
+    <div><b>3</b><span data-en="weeks from hackathon pitch to launch">semaines entre le pitch en hackathon et le lancement</span></div>
+  </div>
+  <p data-en="A third of the audience is a strong number given the circumstances: it was a first edition, users had no idea it was coming, and it launched in the busiest weeks of the year — competing with every other end-of-year message for attention.">Un tiers de l'audience est un bon chiffre au vu des circonstances : c'était une première édition, les utilisateurs ne s'y attendaient pas, et le lancement est tombé sur les semaines les plus chargées de l'année — en concurrence avec tous les autres messages de fin d'année.</p>
+  <div class="encadre">
+    <div class="label" data-en="What it proved">Ce que ça a prouvé</div>
+    <p data-en="The engagement confirmed the initial read: this community wants to be spoken to, not just served. That is a mandate for a second edition — with the personalisation we had to cut.">L'engagement a confirmé la lecture initiale : cette communauté veut qu'on lui parle, pas seulement qu'on la serve. C'est un mandat pour une seconde édition — avec la personnalisation qu'il avait fallu couper.</p>
+  </div>
+</section>
+
+<a class="suivant" href="case-codice-fiscale.html">
+  <div class="label" data-en="Next case study">Projet suivant</div>
+  <h3>Codice Fiscale</h3>
+</a>
+
+</main>
+
+<section class="contact">
+  <div class="label" data-en="Contact">Contact</div>
+  <h2 data-en="Let's talk&lt;br&gt;about your product.">Parlons<br>de votre produit.</h2>
+  <div class="liens">
+    <a href="mailto:rayan.adamczak@gmail.com">rayan.adamczak@gmail.com</a>
+    <a href="https://www.linkedin.com/in/rayan-adamczak/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<script src="assets/case.js"></script>
+</body>
+</html>

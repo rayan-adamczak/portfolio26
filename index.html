@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MATÉRIEL — DA portfolio Rayan Adamczak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ── PP Neue Machina (locale) ─────────────────────────────── */
+@font-face{font-family:'PP Neue Machina';src:url('fonts/PPNeueMachina-Light.otf') format('opentype');
+  font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Neue Machina';src:url('fonts/PPNeueMachina-Regular.otf') format('opentype');
+  font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Neue Machina';src:url('fonts/PPNeueMachina-Ultrabold.otf') format('opentype');
+  font-weight:800;font-style:normal;font-display:swap}
+
+/* ── Tokens ───────────────────────────────────────────────── */
+:root{
+  /* rouge repris exactement des SVG tramés */
+  --noir:#0A0A0A; --encre:#141414; --rouge:#FF1D2D; --rouge-sourd:#8F0F14;
+  --craie:#F2F0EC; --gris:#7A7A7A;
+  --marge:clamp(16px,3.5vw,64px);
+  /* la colonne suit l'écran au lieu de se figer : 1400 à 1440,
+     puis elle continue de grandir jusqu'à 2200 sur 4K. */
+  --maxw:clamp(1080px,84vw,1680px);
+  --display:'PP Neue Machina',system-ui,sans-serif;
+  --texte:'Space Grotesk',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.7,0,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--noir);color:var(--craie);font-family:var(--texte);
+  font-size:clamp(16px,.95vw,21px);line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;cursor:none;
+}
+a{color:inherit;text-decoration:none}
+
+/* ── Grain global ─────────────────────────────────────────── */
+.grain{
+  position:fixed;inset:-50%;z-index:9998;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1s steps(4) infinite;
+}
+@keyframes grain{
+  0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}
+  50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,-1%)}
+  100%{transform:translate(0,0)}
+}
+
+/* ── Curseur ──────────────────────────────────────────────── */
+.cur{
+  position:fixed;top:0;left:0;width:10px;height:10px;background:var(--rouge);
+  z-index:9999;pointer-events:none;mix-blend-mode:difference;
+  transition:width .25s var(--ease),height .25s var(--ease);
+  transform:translate(-50%,-50%);
+}
+.cur.big{width:56px;height:56px}
+
+/* ── Chrome ───────────────────────────────────────────────── */
+.status{
+  position:fixed;top:clamp(22px,2.4vw,44px);right:var(--marge);z-index:100;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+}
+.dot{width:7px;height:7px;background:var(--rouge);border-radius:50%;animation:pulse 1.6s infinite}
+.langue{
+  margin-left:6px;font:inherit;letter-spacing:.12em;color:var(--gris);
+  background:none;border:1px solid var(--encre);padding:3px 8px;cursor:none;
+  transition:color .3s var(--ease),border-color .3s var(--ease);
+}
+.langue:hover{color:var(--rouge);border-color:var(--rouge)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ── Logo « œil » ─────────────────────────────────────────── */
+.logo{
+  position:fixed;top:clamp(22px,2.4vw,44px);left:var(--marge);z-index:100;
+  width:clamp(30px,2.2vw,40px);aspect-ratio:1;background:var(--rouge);
+  display:block;overflow:hidden;
+}
+.logo .pupille{
+  position:absolute;top:50%;width:26%;height:26%;background:var(--noir);
+  transform:translateY(-50%);
+  animation:scrute 9s cubic-bezier(.16,1,.3,1) infinite;
+}
+/* Saccade oculaire : déplacement quasi instantané suivi d'une fixation
+   longue. Les paliers sont volontairement inégaux — un rythme régulier
+   trahit la boucle. La pupille reste toujours dans la boîte : bornes
+   entre 10 % et 58 % pour une pupille large de 26 %, soit 16 % de marge
+   au plus serré. */
+@keyframes scrute{
+  0%      {left:12%; top:50%; height:26%}
+  16%     {left:12%; top:50%; height:26%}
+  19%,29% {left:54%; top:50%; height:26%}
+  30%     {left:54%; top:50%; height:3%}    /* clignement */
+  31%,38% {left:54%; top:50%; height:26%}
+  41%,49% {left:50%; top:64%; height:26%}   /* diagonale vers le bas */
+  52%,60% {left:22%; top:63%; height:26%}   /* balaye le bas */
+  63%,72% {left:30%; top:44%; height:26%}
+  73%     {left:30%; top:44%; height:3%}    /* second clignement */
+  74%,79% {left:30%; top:44%; height:26%}
+  82%,88% {left:58%; top:60%; height:26%}   /* seconde diagonale */
+  91%     {left:12%; top:50%; height:26%}
+  100%    {left:12%; top:50%; height:26%}   /* identique à 0% : boucle nette */
+}
+/* Le clignement vit dans la pupille elle-même (elle s'écrase sur sa
+   hauteur), pas dans un cache rouge par-dessus. Un cache masquait la
+   pupille au lieu de la faire cligner — elle semblait disparaître.
+   Comme tout est dans la même animation, il n'y a plus de désynchro
+   possible entre deux boucles. */
+.logo:hover .pupille{animation-play-state:paused}
+
+.label{
+  font-family:var(--mono);font-size:clamp(11px,.72vw,15px);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gris);
+}
+/* colonne centrée : les gouttières ne grandissent plus indéfiniment */
+section{
+  padding:clamp(64px,10vh,160px) var(--marge);border-top:1px solid var(--encre);
+  max-width:var(--maxw);margin-inline:auto;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+/* `safe center` : si le contenu dépasse la hauteur, il s'aligne en haut
+   au lieu de déborder (et d'être rogné) des deux côtés. */
+.hero{
+  border-top:0;min-height:92vh;display:flex;flex-direction:column;
+  justify-content:safe center;position:relative;
+}
+.hero h1{
+  font-family:var(--display);font-weight:800;color:var(--rouge);
+  font-size:clamp(42px,7vw,168px);line-height:.86;letter-spacing:-.035em;
+  text-transform:uppercase;
+}
+/* Titre et portrait sur une même ligne : le portrait se cale sur l'axe
+   du bloc titre au lieu de flotter en haut à droite. */
+.hero-main{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(24px,5vw,96px);
+}
+.hero-text{min-width:0}
+/* l'interligne .86 fait remonter les capitales dans la ligne du dessus */
+.hero-text .label{margin-bottom:clamp(12px,1.6vh,24px)}
+.hero .sub{
+  font-size:clamp(17px,2vw,38px);color:var(--craie);margin-top:6px;
+  letter-spacing:-.01em;font-weight:500;
+}
+.hero .meta{display:flex;gap:40px;flex-wrap:wrap;margin-top:56px}
+/* ── Visuels tramés ───────────────────────────────────────── */
+/* Les SVG servent de MASQUE, pas d'image : la couleur vient du CSS.
+   Un seul asset suffit donc pour le rouge sur noir ET le noir sur rouge. */
+.dither{
+  -webkit-mask-position:center;mask-position:center;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-size:contain;mask-size:contain;
+  background-color:var(--rouge);
+  transition:background-color .35s var(--ease);
+}
+.portrait{
+  flex:0 0 auto;width:min(26vw,420px);aspect-ratio:290/260;
+  /* le portrait est légèrement en retrait, puis on « l'éclaire » au survol :
+     un gain de luminosité discret, pas un projecteur. */
+  filter:brightness(.78);
+  transition:filter .7s var(--ease),background-color .7s var(--ease);
+  -webkit-mask-image:url('assets/portrait.svg');mask-image:url('assets/portrait.svg');
+}
+.laptop{
+  width:min(38vw,420px);aspect-ratio:325/273;
+  -webkit-mask-image:url('assets/laptop.svg');mask-image:url('assets/laptop.svg');
+}
+.portrait:hover{filter:brightness(1.14) saturate(1.06)}
+/* sur fond rouge, la trame passe en noir */
+.contact .dither{background-color:var(--noir)}
+
+/* ── Le laptop s'allume ───────────────────────────────────────
+   Trois couches, toutes contenues par le masque du SVG :
+   1. un balayage clair qui traverse l'écran au survol ;
+   2. un allumage saccadé quand la section entre à l'écran ;
+   3. une inclinaison 3D qui suit le curseur.
+   Le dégradé est en background-image : comme il est masqué par le SVG,
+   il épouse exactement la silhouette du laptop. */
+.laptop-scene{perspective:1000px;flex:0 0 auto;padding:24px}
+.contact .laptop{
+  background-image:linear-gradient(178deg,transparent 43%,rgba(242,240,236,.55) 50%,transparent 57%);
+  background-size:100% 300%;
+  background-position:0 -100%;
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  /* Pas de transition pendant le survol : elle amortissait chaque
+     mouvement du pointeur et donnait cette impression de laptop qui
+     rame. Elle ne sert qu'au retour à plat. */
+  transition:transform .6s var(--ease);
+  will-change:transform;
+}
+.contact-main:hover .laptop{animation:balayage 1.5s var(--ease);transition:none}
+@keyframes balayage{
+  from{background-position:0 -100%}
+  to  {background-position:0 200%}
+}
+/* allumage : deux ratés avant que l'écran tienne */
+section.in .laptop{animation:allumage .9s steps(1,end)}
+@keyframes allumage{
+  0%,12%  {opacity:0}
+  16%     {opacity:1}
+  22%     {opacity:.15}
+  30%     {opacity:1}
+  38%     {opacity:.4}
+  46%,100%{opacity:1}
+}
+
+/* ══ Mobile ══════════════════════════════════════════════════
+   Le portrait ne disparaît plus : il passe au-dessus du titre, en
+   pleine largeur. Et les bornes basses des clamp remontent — sur un
+   écran de 390 px, 7vw ne faisait que 27 px et tout butait sur le
+   minimum, d'où l'impression de miniature. */
+@media(max-width:860px){
+  :root{--marge:20px}
+
+  /* Hauteur calée sur le viewport moins le bandeau : celui-ci doit être
+     visible sans scroller, sinon on ne sait pas que la page continue.
+     100svh, pas 100vh — la barre d'URL mobile fausse vh. */
+  .hero{
+    min-height:calc(100svh - 46px);padding-top:76px;padding-bottom:22px;
+    justify-content:space-between;
+  }
+  .hero-main{display:flex;flex-direction:column-reverse;align-items:stretch;gap:18px}
+  .hero-text{max-width:none}
+  .portrait{width:min(62%,240px);margin-inline:auto 0}
+  .hero h1{font-size:clamp(46px,12.5vw,80px)}
+  .hero .sub{font-size:clamp(18px,4.6vw,26px)}
+  /* une info par ligne : les valeurs ne se coupent plus en deux */
+  .hero .meta{display:grid;grid-template-columns:1fr;gap:14px;margin-top:26px}
+  .hero .meta > div{display:grid;grid-template-columns:74px 1fr;gap:10px;align-items:baseline}
+  /* 15px : « Mobile app · Design system · UX/UI » tient sur une ligne
+     jusqu'à 360 px de large. Au-delà ça repasse en deux lignes. */
+  .hero .meta{font-size:15px}
+  .hero .meta .label{margin:0}
+
+  .manifeste p{font-size:clamp(22px,5.6vw,34px);max-width:none}
+  .manifeste .manifeste-suite{font-size:clamp(16px,4vw,20px);max-width:none}
+
+  /* index projets : la ligne se déplie au lieu de compresser 3 colonnes */
+  .row{grid-template-columns:1fr;gap:10px;padding:22px 12px}
+  .row h3{font-size:clamp(28px,8vw,44px)}
+  .row .num{text-align:left;max-width:none}
+  .row:hover{padding-left:12px}
+
+  .vignette .cadre{height:clamp(190px,46vw,270px)}
+  /* Le survol n'existe pas au doigt : la vignette au centre de l'écran
+     prend la couleur à sa place. Piloté en JS par l'observateur. */
+  .vignette img{filter:grayscale(1) contrast(1.1) brightness(.72)}
+  .vignette.actif img{filter:none;transform:scale(1.02)}
+  .vignette.actif figcaption b{color:var(--rouge)}
+
+  .cols{grid-template-columns:1fr 1fr}
+  .col{padding:22px 18px}
+
+  a.job,.job{grid-template-columns:1fr;gap:6px;padding:20px 12px 20px 0}
+  a.job::after{top:22px;transform:none}
+  a.job:hover{padding-left:12px}
+  a.job:hover > span:last-child{padding-right:0}
+
+  .contact-main{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+  .contact h2{font-size:clamp(42px,12vw,84px)}
+  .contact .links{gap:14px;font-size:11px}
+  .laptop-scene{padding:0;align-self:center}
+  .contact .laptop{width:min(78vw,340px)}
+
+  .status{font-size:10px;gap:6px}
+  .marquee .passe{font-size:11px;gap:32px;padding-right:32px}
+  .loupe-nav button{padding:12px 20px}
+}
+
+/* le curseur custom n'a aucun sens au doigt */
+@media(hover:none){
+  body{cursor:auto}
+  .cur,.peek{display:none}
+  .langue,.loupe button{cursor:pointer}
+  .portrait{filter:brightness(1)}
+  /* aucun état :hover atteignable au doigt — on neutralise pour éviter
+     les états « collés » après un tap */
+  .row:hover,a.job:hover{background:none;color:inherit;padding-left:12px}
+  .row:hover .tags,.row:hover .num,a.job:hover b{color:var(--gris)}
+  .row:hover h3{color:var(--craie)}
+  a.job:hover b{color:var(--craie)}
+  a.job::after{opacity:.5}
+  .col li::before{width:16px;margin-right:10px}
+  .vignette:hover img{transform:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .contact .laptop{animation:none!important;transform:none!important}
+}
+
+
+/* ── Marquee ──────────────────────────────────────────────── */
+.marquee{
+  background:var(--rouge);color:var(--noir);padding:14px 0;overflow:hidden;
+  border-top:0;white-space:nowrap;
+}
+.marquee .track{display:flex;width:max-content;animation:slide 34s linear infinite}
+/* Le gap interne ET l'écart entre les deux passes valent 48px : sans ça,
+   -50 % ne tombe pas sur une frontière de passe et on voit le raccord. */
+.marquee .passe{display:flex;gap:48px;padding-right:48px;font-family:var(--mono);
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.marquee .passe span{white-space:nowrap}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── Manifeste ────────────────────────────────────────────── */
+/* Deux paragraphes : l'échelle descend, sinon le bloc mange l'écran. */
+.manifeste p{font-size:clamp(24px,3.2vw,56px);line-height:1.24;letter-spacing:-.025em;
+  max-width:19ch;font-weight:500;margin-top:32px}
+.manifeste .manifeste-suite{color:var(--gris);font-size:clamp(16px,1.5vw,26px);
+  max-width:38ch;margin-top:26px;font-weight:400}
+.manifeste em{color:var(--rouge);font-style:normal}
+
+/* ── Index projets ────────────────────────────────────────── */
+.row{
+  /* Le 001 s'aligne sur le bord de la colonne, comme le libellé de
+     section. La largeur fixe de 64 px le décalait vers l'intérieur. */
+  display:grid;grid-template-columns:auto 1fr auto;gap:clamp(18px,2.6vw,44px);
+  align-items:center;padding:28px 12px 28px 0;border-bottom:1px solid var(--encre);
+  transition:background .35s var(--ease),color .35s var(--ease),padding-left .35s var(--ease);
+}
+.row:first-of-type{border-top:1px solid var(--encre)}
+.row h3{font-family:var(--display);font-weight:800;font-size:clamp(22px,3.6vw,68px);
+  text-transform:uppercase;letter-spacing:-.03em;line-height:1}
+.row .tags{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.row:hover{background:var(--rouge);color:var(--noir);padding-left:32px}
+/* la ligne survolée pousse son numéro en gras : repère de lecture */
+.row:hover .num{font-weight:700}
+.row:hover .tags,.row:hover .num{color:var(--noir)}
+.num{font-family:var(--mono);font-size:clamp(10px,.68vw,12px);color:var(--gris);
+  letter-spacing:.08em;text-transform:uppercase;text-align:right;max-width:22ch}
+
+.peek{
+  /* Carré, sinon le cercle du dégradé (dimensionné sur le coin le plus
+     éloigné) déborde en haut et en bas de la boîte et se fait couper. */
+  position:fixed;width:min(340px,26vw);aspect-ratio:1;pointer-events:none;z-index:90;
+  opacity:0;transform:translate(-50%,-50%) scale(.9);transition:opacity .3s,transform .3s var(--ease);
+  background:radial-gradient(70% 70% at 42% 36%,var(--rouge),var(--rouge-sourd) 52%,var(--noir) 84%);
+
+  /* Deux couches de masque multipliées entre elles :
+     1. la trame de points, qui se répète ;
+     2. un dégradé radial d'opacité, qui ne se répète pas.
+     Résultat : la trame est dense sous le curseur et se dissout vers
+     les bords, au lieu de s'arrêter net sur un carré. */
+  -webkit-mask-image:
+    radial-gradient(circle at center,#000 .9px,transparent 1.1px),
+    radial-gradient(circle closest-side at center,#000 8%,rgba(0,0,0,.5) 46%,transparent 96%);
+  mask-image:
+    radial-gradient(circle at center,#000 .9px,transparent 1.1px),
+    radial-gradient(circle closest-side at center,#000 8%,rgba(0,0,0,.5) 46%,transparent 96%);
+  -webkit-mask-size:4px 4px,100% 100%;
+  mask-size:4px 4px,100% 100%;
+  -webkit-mask-repeat:repeat,no-repeat;
+  mask-repeat:repeat,no-repeat;
+  /* `intersect` = alpha_trame × alpha_dégradé */
+  -webkit-mask-composite:source-in;
+  mask-composite:intersect;
+}
+.peek.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+/* ── Carrousel d'aperçus ──────────────────────────────────────
+   Défilement horizontal libre : molette, drag à la souris, ou swipe.
+   `scroll-snap` cale chaque vignette sans bloquer le geste. */
+.carrousel{
+  margin-top:40px;display:flex;gap:1px;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x proximity;scrollbar-width:none;
+  padding-bottom:2px;cursor:grab;
+  /* débord plein bord : le carrousel sort de la colonne, il file vers la droite */
+  margin-right:calc(-1 * var(--marge));
+}
+.carrousel::-webkit-scrollbar{display:none}
+.carrousel.drag{cursor:grabbing;scroll-snap-type:none}
+.vignette{
+  flex:0 0 auto;scroll-snap-align:start;
+  background:var(--encre);position:relative;user-select:none;
+}
+.vignette .cadre{
+  height:clamp(200px,30vh,360px);overflow:hidden;background:var(--noir);
+}
+/* Désaturé au repos, couleur au survol : la couleur d'un mockup entre
+   toujours en conflit avec le rouge de la DA. On la garde pour le focus. */
+.vignette img{height:100%;width:auto;display:block;
+  filter:grayscale(1) contrast(1.1) brightness(.72);
+  transition:filter .6s var(--ease),transform .8s var(--ease)}
+.vignette:hover img{filter:none;transform:scale(1.02)}
+.vignette figcaption{
+  display:flex;justify-content:space-between;gap:12px;padding:14px 16px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gris);border-top:1px solid var(--noir);
+}
+.vignette figcaption b{color:var(--craie);font-weight:400}
+.vignette:hover figcaption b{color:var(--rouge)}
+.vignette{cursor:pointer}
+/* ── Visionneuse ──────────────────────────────────────────── */
+.loupe{
+  position:fixed;inset:0;z-index:200;background:rgba(10,10,10,.94);
+  display:grid;place-items:center;padding:clamp(20px,5vw,72px);
+  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;
+  backdrop-filter:blur(8px);
+}
+.loupe[open]{opacity:1;visibility:visible}
+.loupe img{max-width:100%;max-height:82vh;display:block;object-fit:contain}
+.loupe-barre{
+  position:absolute;top:clamp(18px,3vw,34px);left:var(--marge);right:var(--marge);
+  display:flex;justify-content:space-between;gap:20px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gris);
+}
+.loupe-barre b{color:var(--craie);font-weight:400}
+.loupe button{
+  font:inherit;letter-spacing:.14em;color:var(--gris);background:none;
+  border:1px solid var(--encre);padding:8px 14px;cursor:none;
+  transition:color .3s var(--ease),border-color .3s var(--ease);
+}
+.loupe button:hover{color:var(--rouge);border-color:var(--rouge)}
+.loupe-nav{position:absolute;bottom:clamp(18px,3vw,34px);left:50%;transform:translateX(-50%);
+  display:flex;gap:10px}
+.carrousel-aide{
+  margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gris);
+}
+
+/* ── Colonnes expertises ──────────────────────────────────── */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--encre);margin-top:48px}
+.col{background:var(--noir);padding:32px 24px}
+.col h4{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:20px;
+  letter-spacing:-.02em;color:var(--rouge);margin-bottom:12px}
+/* Au survol : la puce rouge se déploie et l'item glisse pour lui faire
+   place. Transition sur la largeur d'un pseudo-élément, pas sur padding
+   du <li> — le filet du bas ne bouge pas. */
+.col li{list-style:none;font-size:15px;color:var(--gris);padding:5px 0;
+  border-bottom:1px solid var(--encre);display:flex;align-items:center;
+  transition:color .35s var(--ease)}
+.col li::before{
+  content:'';width:0;height:1px;background:var(--rouge);margin-right:0;
+  transition:width .35s var(--ease),margin-right .35s var(--ease);
+}
+.col li:hover{color:var(--craie)}
+.col li:hover::before{width:16px;margin-right:10px}
+
+.index{margin-top:40px}
+
+/* ── Parcours ─────────────────────────────────────────────── */
+a.job{display:grid;grid-template-columns:130px 1fr auto;gap:20px;padding:20px 16px 20px 0;
+  border-bottom:1px solid var(--encre);font-family:var(--mono);font-size:13px;
+  transition:background .35s var(--ease),padding-left .35s var(--ease)}
+a.job:first-of-type{border-top:1px solid var(--encre)}
+a.job:hover{background:var(--rouge);color:var(--noir);padding-left:16px}
+a.job:hover b{color:var(--noir)}
+/* La flèche était en ::after sur le <b> : même invisible elle occupait
+   sa largeur, ce qui décalait le point médian selon la longueur du nom.
+   Elle passe en absolu — zéro impact sur le flux. */
+a.job{position:relative}
+a.job::after{
+  content:'↗';position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  opacity:0;transition:opacity .35s var(--ease);pointer-events:none;
+}
+a.job:hover::after{opacity:1}
+a.job:hover > span:last-child{padding-right:22px}
+a.job > span:last-child{transition:padding-right .35s var(--ease)}
+/* même règle de survol pour les lignes non cliquables */
+.job{display:grid;grid-template-columns:130px 1fr auto;gap:20px;
+  padding:20px 16px 20px 0;border-bottom:1px solid var(--encre);
+  font-family:var(--mono);font-size:13px}
+.job b{font-family:var(--texte);font-size:17px;font-weight:700;letter-spacing:-.01em}
+
+/* ── Contact rouge ────────────────────────────────────────── */
+/* seul bloc en plein bord : le rouge saigne, mais le texte reste aligné
+   sur la même colonne que le reste du site. */
+.contact{
+  background:var(--rouge);color:var(--noir);text-align:left;
+  position:relative;
+  /* pas d'overflow:hidden ici : il rognait le laptop dès qu'il pivotait.
+     Le débord horizontal est déjà bloqué par overflow-x sur <body>. */
+  max-width:none;
+  padding-inline:max(var(--marge),calc((100% - var(--maxw))/2 + var(--marge)));
+}
+.contact-main{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(24px,5vw,96px);margin-top:24px;
+}
+.contact .laptop{flex:0 0 auto;width:min(30vw,460px)}
+
+/* sur fond rouge le gris du libellé tombait à 2:1 de contraste */
+.contact .label{color:var(--noir);opacity:.6}
+.contact h2{font-family:var(--display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(42px,7vw,168px);line-height:.86;letter-spacing:-.035em}
+.contact .links{display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;font-family:var(--mono);
+  font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.contact .links a{border-bottom:2px solid var(--noir);padding-bottom:3px}
+.contact .links a:hover{background:var(--noir);color:var(--rouge);border-color:transparent}
+
+/* ── Reveal au scroll ─────────────────────────────────────── */
+/* état masqué posé par JS (.js-reveal sur <html>) : sans JS tout reste visible */
+.js-reveal section > *{
+  clip-path:inset(0 0 100% 0);opacity:0;
+  transition:clip-path .8s var(--ease),opacity .6s ease;
+}
+/* débord négatif à l'arrivée : avec line-height .86 les capitales
+   dépassent la box, un inset(0) leur raserait le haut. */
+.js-reveal section.in > *{clip-path:inset(-30% -10% -10% -10%);opacity:1}
+/* Un clip-path sur un ancêtre rogne ses descendants, y compris hors du
+   plan. Le laptop qui pivote en 3D se faisait couper par le clip de
+   .contact-main : ici la révélation se fait à l'opacité seule. */
+.js-reveal .contact > *,.js-reveal .contact.in > *{clip-path:none}
+.js-reveal section.in > *:nth-child(2){transition-delay:.06s}
+.js-reveal section.in > *:nth-child(3){transition-delay:.12s}
+.js-reveal section.in > *:nth-child(4){transition-delay:.18s}
+.js-reveal section.in > *:nth-child(5){transition-delay:.24s}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .js-reveal section > *{clip-path:none;opacity:1}
+}
+</style>
+<!-- Chargé APRÈS le <style> pour écraser les mask-image en url('assets/*.svg'),
+     inutilisables en file://. Supprimable une fois le site servi en http. -->
+<link rel="stylesheet" href="assets/masks.css">
+</head>
+<body>
+<div class="grain"></div>
+<div class="cur" id="cur"></div>
+<div class="peek" id="peek"></div>
+
+<a class="logo" href="#" aria-label="Accueil"><span class="pupille"></span></a>
+<div class="status">
+  <span class="dot"></span><span data-en="Signal — Brest, FR">Signal — Brest, FR</span>
+  <button class="langue" id="langue" type="button" aria-label="Language">EN</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-main">
+    <div class="hero-text">
+      <div class="label" data-en="(001) — Portfolio">(001) — Portfolio</div>
+      <h1>Product<br>Designer</h1>
+      <div class="sub">Rayan Adamczak</div>
+    </div>
+    <div class="portrait dither" role="img" aria-label="Portrait de Rayan Adamczak, traité en trame 1-bit"></div>
+  </div>
+  <div class="meta">
+    <div><div class="label" data-en="Focus">Focus</div><span data-en="Mobile app · Design system · UX/UI">Mobile app · Design system · UX/UI</span></div>
+    <div><div class="label" data-en="Status">Statut</div><span data-en="Freelance · open to work">Freelance · dispo missions</span></div>
+    <div><div class="label" data-en="Based">Base</div><span data-en="France &amp; Remote">France &amp; Remote</span></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<!-- Deux passes strictement identiques : la piste fait exactement 2× la
+     largeur d'une passe, donc translateX(-50%) revient au pixel de départ. -->
+<div class="marquee">
+  <div class="track">
+    <div class="passe">
+      <span>Product Designer</span><span>✱</span>
+      <span data-en="Available for freelance">Available for freelance</span><span>✱</span>
+      <span>Brest, FR</span><span>✱</span>
+      <span>Neocity → Electra → Brand Appart → Digifeel</span><span>✱</span>
+    </div>
+    <div class="passe" aria-hidden="true">
+      <span>Product Designer</span><span>✱</span>
+      <span data-en="Available for freelance">Available for freelance</span><span>✱</span>
+      <span>Brest, FR</span><span>✱</span>
+      <span>Neocity → Electra → Brand Appart → Digifeel</span><span>✱</span>
+    </div>
+  </div>
+</div>
+
+<!-- MANIFESTE -->
+<section class="manifeste">
+  <div class="label" data-en="(002) — Manifesto">(002) — Manifeste</div>
+  <p data-en="&lt;em&gt;User-centric&lt;/em&gt; solutions that serve the &lt;em&gt;business&lt;/em&gt; too.">Des solutions centrées <em>utilisateur</em>, qui servent aussi le <em>business.</em></p>
+  <p class="manifeste-suite" data-en="Thanks to numerous experiences and solutions delivered, I developed a wide panel of skills: discovery, definition and design backed by customer insights.">Au fil des expériences et des projets livrés, j'ai développé un large éventail de compétences : discovery, définition et design, nourris par les insights clients.</p>
+</section>
+
+<!-- INDEX PROJETS -->
+<section>
+  <div class="label" data-en="(003) — Case studies">(003) — Case studies</div>
+  <div class="index">
+    <a class="row" href="case-parking-access.html" data-peek>
+      <span class="num">001</span>
+      <div><h3>Parking Access</h3>
+        <div class="tags" data-en="Electra · 4 months · Mobile &amp; app · B2C · Interviews · Testing · UX/UI">Electra · 4 mois · Mobile &amp; app · B2C · Entretiens · Tests · UX/UI</div></div>
+      <span class="num" data-en="Barrier exit, no payment">Sortie de parking sans paiement</span>
+    </a>
+    <a class="row" href="case-retro.html" data-peek>
+      <span class="num">002</span>
+      <div><h3>Retro</h3>
+        <div class="tags" data-en="Electra · 3 weeks · Mobile · B2C · Motion · Analytics">Electra · 3 semaines · Mobile · B2C · Motion · Analytics</div></div>
+      <span class="num" data-en="33 % adoption — 1,000+ users">33 % d'adoption — 1 000+ utilisateurs</span>
+    </a>
+    <a class="row" href="case-codice-fiscale.html" data-peek>
+      <span class="num">003</span>
+      <div><h3>Codice Fiscale</h3>
+        <div class="tags" data-en="Electra · 2 months · Mobile &amp; app · B2C + B2B · Research · UX/UI">Electra · 2 mois · Mobile &amp; app · B2C + B2B · Recherche · UX/UI</div></div>
+      <span class="num" data-en="Italian market opened">Ouverture du marché italien</span>
+    </a>
+  </div>
+</section>
+
+<!-- APERÇUS -->
+<section>
+  <div class="label" data-en="(004) — Previews">(004) — Aperçus</div>
+  <div class="carrousel" id="carrousel">
+    <figure class="vignette"><div class="cadre">
+      <img src="assets/carrousel/1.png" alt="Parking Access" loading="lazy" draggable="false"></div>
+      <figcaption><b>Parking Access</b><span>01</span></figcaption></figure>
+    <figure class="vignette"><div class="cadre">
+      <img src="assets/carrousel/2.png" alt="Log-in" loading="lazy" draggable="false"></div>
+      <figcaption><b>Log-in</b><span>02</span></figcaption></figure>
+    <figure class="vignette"><div class="cadre">
+      <img src="assets/carrousel/3.png" alt="Electra Retro" loading="lazy" draggable="false"></div>
+      <figcaption><b>Electra Retro</b><span>03</span></figcaption></figure>
+    <figure class="vignette"><div class="cadre">
+      <img src="assets/carrousel/4.png" alt="Posters" loading="lazy" draggable="false"></div>
+      <figcaption><b>Posters</b><span>04</span></figcaption></figure>
+  </div>
+  <div class="carrousel-aide" data-en="Drag · scroll · swipe">Glisser · molette · swipe</div>
+</section>
+
+<!-- VISIONNEUSE -->
+<div class="loupe" id="loupe" role="dialog" aria-modal="true" aria-label="Aperçu">
+  <div class="loupe-barre">
+    <span><b id="loupe-titre"></b> <span id="loupe-num"></span></span>
+    <button type="button" id="loupe-fermer" data-en="Close">Fermer</button>
+  </div>
+  <img id="loupe-img" alt="">
+  <div class="loupe-nav">
+    <button type="button" id="loupe-prec" aria-label="Précédent">←</button>
+    <button type="button" id="loupe-suiv" aria-label="Suivant">→</button>
+  </div>
+</div>
+
+<!-- EXPERTISES -->
+<section>
+  <div class="label" data-en="(005) — Expertise">(005) — Expertises</div>
+  <div class="cols">
+    <div class="col"><h4>Discovery</h4><ul>
+      <li data-en="User research">User research</li>
+      <li data-en="User interviews">User interview</li>
+      <li data-en="Benchmark">Benchmark</li>
+      <li data-en="User testing">User testing</li></ul></div>
+    <div class="col"><h4>Design</h4><ul>
+      <li data-en="Design system">Design system</li>
+      <li data-en="UX/UI design">UX/UI design</li>
+      <li data-en="Wireframing">Wireframing</li>
+      <li data-en="Prototyping">Prototyping</li></ul></div>
+    <div class="col"><h4>Delivery</h4><ul>
+      <li data-en="Accessibility">Accessibilité</li>
+      <li data-en="Responsive">Responsive</li>
+      <li data-en="Dev handoff">Handoff dev</li>
+      <li data-en="Analytics">Analytics</li></ul></div>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<section>
+  <div class="label" data-en="(006) — Career">(006) — Parcours</div>
+  <div class="index">
+    <a class="job" href="https://www.digifeel.io/" target="_blank" rel="noopener">
+      <span data-en="2026 — now">2026 — auj.</span>
+      <span><b>Digifeel</b> · <span data-en="E-commerce &amp; SaaS for merchants">E-commerce &amp; SaaS pour commerçants</span></span>
+      <span>Product Designer</span></a>
+    <div class="job">
+      <span data-en="2025 — now">2025 — auj.</span>
+      <span><b>Surrealiste Studio</b> · <span data-en="SaaS &amp; landing page studio">Studio SaaS &amp; landing</span></span>
+      <span data-en="Co-founder &amp; Designer">Co-fondateur &amp; Designer</span></div>
+    <a class="job" href="https://brandappart.com/" target="_blank" rel="noopener">
+      <span>2025 — 2026</span>
+      <span><b>Brand Appart</b> · <span data-en="Branding &amp; product agency">Agence branding &amp; produit</span></span>
+      <span>Product Designer</span></a>
+    <a class="job" href="https://www.go-electra.com/" target="_blank" rel="noopener">
+      <span>2022 — 2024</span>
+      <span><b>Electra</b> · <span data-en="EV charging stations">Stations de recharge</span></span>
+      <span>Product Designer</span></a>
+    <a class="job" href="https://neocity.fr/" target="_blank" rel="noopener">
+      <span>2019 — 2022</span>
+      <span><b>Neocity</b> · <span data-en="Mobile apps for cities">Applications mobiles pour les villes</span></span>
+      <span>First Product Designer</span></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="label" data-en="(007) — Contact">(007) — Contact</div>
+  <div class="contact-main">
+    <div>
+      <h2 data-en="Let's talk&lt;br&gt;about your&lt;br&gt;product.">Parlons<br>de votre<br>produit.</h2>
+      <div class="links">
+        <a href="mailto:rayan.adamczak@gmail.com">rayan.adamczak@gmail.com</a>
+        <a href="https://www.linkedin.com/in/rayan-adamczak/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" data-en="Resume — PDF">CV — PDF</a>
+      </div>
+    </div>
+    <div class="laptop-scene">
+      <div class="laptop dither" id="laptop" role="img" aria-label="Illustration d'ordinateur portable en trame 1-bit"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── Localisation ────────────────────────────────────────────
+// Le FR est dans le HTML ; l'EN vit dans data-en. On mémorise le FR au
+// premier basculement pour pouvoir revenir sans recharger la page.
+const btnLangue = document.getElementById('langue');
+function applique(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
+    el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.fr;
+  });
+  btnLangue.textContent = lang === 'en' ? 'FR' : 'EN';
+  document.title = lang === 'en'
+    ? 'Rayan Adamczak — Product Designer'
+    : 'Rayan Adamczak — Product Designer';
+  // libellés lus par les lecteurs d'écran, invisibles mais localisés
+  const aria = lang === 'en'
+    ? {logo:'Home', portrait:'Portrait of Rayan Adamczak, 1-bit dithered',
+       laptop:'Laptop illustration, 1-bit dithered', prec:'Previous', suiv:'Next',
+       loupe:'Preview', lang:'Passer en français'}
+    : {logo:'Accueil', portrait:'Portrait de Rayan Adamczak, traité en trame 1-bit',
+       laptop:'Illustration d\'ordinateur portable en trame 1-bit', prec:'Précédent',
+       suiv:'Suivant', loupe:'Aperçu', lang:'Switch to English'};
+  document.querySelector('.logo').setAttribute('aria-label', aria.logo);
+  document.querySelector('.portrait').setAttribute('aria-label', aria.portrait);
+  document.querySelector('.laptop').setAttribute('aria-label', aria.laptop);
+  document.getElementById('loupe').setAttribute('aria-label', aria.loupe);
+  document.getElementById('loupe-prec').setAttribute('aria-label', aria.prec);
+  document.getElementById('loupe-suiv').setAttribute('aria-label', aria.suiv);
+  btnLangue.setAttribute('aria-label', aria.lang);
+  try { localStorage.setItem('folio-lang', lang); } catch(e) {}
+}
+// Choix explicite > langues du navigateur. Tout ce qui n'est pas
+// francophone bascule en anglais.
+let lang;
+try { lang = localStorage.getItem('folio-lang'); } catch(e) {}
+if (lang !== 'fr' && lang !== 'en') {
+  const dispo = navigator.languages && navigator.languages.length
+    ? navigator.languages : [navigator.language || 'en'];
+  lang = dispo.some(l => l.toLowerCase().startsWith('fr')) ? 'fr' : 'en';
+}
+applique(lang);
+btnLangue.addEventListener('click', () => applique(document.documentElement.lang === 'en' ? 'fr' : 'en'));
+
+// curseur
+const cur=document.getElementById('cur'), peek=document.getElementById('peek');
+addEventListener('pointermove',e=>{
+  cur.style.transform=`translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`;
+  peek.style.left=e.clientX+'px'; peek.style.top=e.clientY+'px';
+});
+document.querySelectorAll('a,.row').forEach(el=>{
+  el.addEventListener('pointerenter',()=>cur.classList.add('big'));
+  el.addEventListener('pointerleave',()=>cur.classList.remove('big'));
+});
+// preview tramée au survol des projets
+document.querySelectorAll('[data-peek]').forEach(el=>{
+  el.addEventListener('pointerenter',()=>peek.classList.add('on'));
+  el.addEventListener('pointerleave',()=>peek.classList.remove('on'));
+});
+// Carrousel : glisser-déposer à la souris. On désactive le snap pendant
+// le drag, sinon le défilement se recale à chaque micro-mouvement.
+const car = document.getElementById('carrousel');
+let tire = false, xDepart = 0, scrollDepart = 0;
+car.addEventListener('pointerdown', e => {
+  tire = true; xDepart = e.clientX; scrollDepart = car.scrollLeft;
+  car.classList.add('drag'); car.setPointerCapture(e.pointerId);
+});
+car.addEventListener('pointermove', e => {
+  if (!tire) return;
+  car.scrollLeft = scrollDepart - (e.clientX - xDepart);
+});
+const relache = () => { tire = false; car.classList.remove('drag'); };
+car.addEventListener('pointerup', relache);
+car.addEventListener('pointercancel', relache);
+// la molette verticale pilote le défilement horizontal
+car.addEventListener('wheel', e => {
+  if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+  e.preventDefault(); car.scrollLeft += e.deltaY;
+}, {passive: false});
+
+// Bandeau : la piste ne faisait que 2 passes. Sur un écran plus large
+// qu'une passe, la moitié translatée laissait un vide. On clone jusqu'à
+// ce qu'une demi-piste dépasse la largeur du viewport, en gardant un
+// nombre pair de passes pour que -50 % retombe sur une frontière.
+(function bandeau(){
+  const track = document.querySelector('.track');
+  const modele = track.querySelector('.passe');
+  const largeur = modele.getBoundingClientRect().width;
+  const parMoitie = Math.max(1, Math.ceil(innerWidth / largeur) + 1);
+  while (track.children.length < parMoitie * 2) {
+    const copie = modele.cloneNode(true);
+    copie.setAttribute('aria-hidden', 'true');
+    track.appendChild(copie);
+  }
+  // vitesse constante quel que soit le nombre de copies
+  track.style.animationDuration = (track.scrollWidth / 2 / 46) + 's';
+})();
+addEventListener('resize', () => location.reload === null && 0);
+
+// Le laptop s'incline vers le curseur. Amplitude faible (±7°) : au-delà
+// on lit une maquette 3D, pas un objet posé.
+const laptop = document.getElementById('laptop');
+const scene = document.querySelector('.contact-main');
+scene.addEventListener('pointermove', e => {
+  const r = scene.getBoundingClientRect();
+  const px = (e.clientX - r.left) / r.width  - .5;
+  const py = (e.clientY - r.top)  / r.height - .5;
+  laptop.style.setProperty('--ry', (px * 14).toFixed(2) + 'deg');
+  laptop.style.setProperty('--rx', (-py * 9).toFixed(2) + 'deg');
+});
+scene.addEventListener('pointerleave', () => {
+  laptop.style.setProperty('--ry', '0deg');
+  laptop.style.setProperty('--rx', '0deg');
+});
+
+// Visionneuse : les vignettes du carrousel s'ouvrent en plein écran.
+// Le drag ne doit pas déclencher l'ouverture, d'où le seuil de 6 px.
+const loupe = document.getElementById('loupe');
+const loupeImg = document.getElementById('loupe-img');
+const loupeTitre = document.getElementById('loupe-titre');
+const loupeNum = document.getElementById('loupe-num');
+const vignettes = [...document.querySelectorAll('.vignette')];
+let indexCourant = 0;
+
+function ouvre(i){
+  indexCourant = (i + vignettes.length) % vignettes.length;
+  const v = vignettes[indexCourant];
+  const img = v.querySelector('img');
+  loupeImg.src = img.src;
+  loupeImg.alt = img.alt;
+  loupeTitre.textContent = v.querySelector('figcaption b').textContent;
+  loupeNum.textContent = v.querySelector('figcaption span').textContent
+    + ' / ' + String(vignettes.length).padStart(2, '0');
+  loupe.setAttribute('open', '');
+}
+const ferme = () => loupe.removeAttribute('open');
+
+vignettes.forEach((v, i) => {
+  v.addEventListener('pointerup', e => {
+    if (Math.abs(e.clientX - xDepart) > 6) return;   // c'était un drag
+    ouvre(i);
+  });
+});
+document.getElementById('loupe-fermer').addEventListener('click', ferme);
+document.getElementById('loupe-prec').addEventListener('click', () => ouvre(indexCourant - 1));
+document.getElementById('loupe-suiv').addEventListener('click', () => ouvre(indexCourant + 1));
+loupe.addEventListener('click', e => { if (e.target === loupe) ferme(); });
+addEventListener('keydown', e => {
+  if (!loupe.hasAttribute('open')) return;
+  if (e.key === 'Escape') ferme();
+  if (e.key === 'ArrowLeft') ouvre(indexCourant - 1);
+  if (e.key === 'ArrowRight') ouvre(indexCourant + 1);
+});
+
+// Au doigt, la vignette la plus proche du centre passe en couleur.
+// Même rôle que le survol, déclenché par le défilement.
+if (matchMedia('(hover:none)').matches) {
+  const io2 = new IntersectionObserver(entrees => {
+    entrees.forEach(e => e.target.classList.toggle('actif', e.intersectionRatio > .6));
+  }, {root: car, threshold: [0, .6, 1]});
+  vignettes.forEach(v => io2.observe(v));
+}
+
+// reveal au scroll — on observe les <section>, pas leurs enfants :
+// un enfant en clip-path:inset(0 0 100%) a une zone d'intersection nulle,
+// l'observer ne se déclencherait jamais.
+document.documentElement.classList.add('js-reveal');
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:0,rootMargin:'0px 0px -10% 0px'});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+// filet de sécurité : si l'observer ne répond pas, on affiche tout
+setTimeout(()=>document.querySelectorAll('section:not(.in)').forEach(s=>s.classList.add('in')),1500);
+</script>
+</body>
+</html>
