@@ -332,7 +332,10 @@ section.in .laptop-scene{animation:allumage .9s steps(1,end)}
 .row:first-of-type{border-top:1px solid var(--encre)}
 .row h2{font-family:var(--display);font-weight:800;font-size:clamp(22px,3.6vw,68px);
   text-transform:uppercase;letter-spacing:-.03em;line-height:1}
-.row .tags{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+/* Les tags se calaient directement sous le titre alors que la grille
+   sépare ses lignes de 10 px : même valeur ici pour un rythme régulier. */
+.row .tags{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);
+  margin-top:10px}
 .row:hover{background:var(--rouge);color:var(--noir);padding-left:32px}
 /* la ligne survolée pousse son numéro en gras : repère de lecture */
 .row:hover .num{font-weight:700}
@@ -554,9 +557,8 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
    Autant garder la couleur franche, la hiérarchie passe par la taille. */
 .contact .pied{
   margin-top:clamp(52px,9vh,110px);padding-top:20px;
-  /* Du vide sous le pied : la page doit se terminer sur du rouge, pas sur
-     une ligne de texte collée au bord. */
-  padding-bottom:clamp(56px,11vh,140px);
+  /* Pas de padding ici : la section porte déjà son propre bas de page.
+     En cumulant les deux, le rouge continuait sur 260 px de vide. */
   border-top:1px solid var(--noir);
   /* Grille et non `space-between` : avec trois éléments de largeurs
      inégales, l'espace réparti ne place pas l'œil au milieu. Les deux
