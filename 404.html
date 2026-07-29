@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Rayan Adamczak</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* Page autonome : GitHub la sert depuis n'importe quelle profondeur
+   d'URL, donc tous les chemins sont absolus. */
+@font-face{font-family:'PP Neue Machina';src:url('/fonts/PPNeueMachina-Ultrabold.woff2') format('woff2');
+  font-weight:800;font-style:normal;font-display:swap}
+
+:root{
+  --noir:#0A0A0A; --rouge:#FF1D2D; --craie:#F2F0EC; --gris:#7A7A7A;
+  --marge:clamp(16px,3.5vw,64px);
+  --display:'PP Neue Machina',system-ui,sans-serif;
+  --texte:'Space Grotesk',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.7,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--noir);color:var(--craie);font-family:var(--texte);
+  min-height:100svh;display:flex;flex-direction:column;
+  justify-content:safe center;padding:var(--marge);gap:clamp(20px,3vh,36px);
+  -webkit-font-smoothing:antialiased;
+}
+.label{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gris);
+}
+h1{
+  font-family:var(--display);font-weight:800;color:var(--rouge);
+  font-size:clamp(72px,18vw,240px);line-height:.86;letter-spacing:-.035em;
+}
+p{font-size:clamp(16px,2vw,22px);max-width:44ch;color:var(--craie)}
+a.retour{
+  align-self:flex-start;display:inline-flex;align-items:center;gap:14px;
+  color:var(--craie);text-decoration:none;font-family:var(--mono);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid #141414;padding:14px 20px;
+  transition:background .35s var(--ease),color .35s var(--ease);
+}
+a.retour:hover{background:var(--rouge);color:var(--noir);border-color:var(--rouge)}
+
+/* Le logo, repris de l'accueil : carré rouge, pupille noire qui scrute. */
+.logo{
+  position:fixed;top:clamp(22px,2.4vw,44px);left:var(--marge);
+  width:clamp(30px,2.2vw,40px);aspect-ratio:1;background:var(--rouge);
+  display:block;overflow:hidden;cursor:none;
+}
+.logo .pupille{
+  position:absolute;top:50%;left:0;width:32%;height:32%;background:var(--noir);
+  animation:scrute 9s cubic-bezier(.16,1,.3,1) infinite;
+}
+@keyframes scrute{
+  0%,16%  {transform:translate(40%,-41%)   scaleY(1)}
+  19%,29% {transform:translate(170%,-41%)  scaleY(1)}
+  30%     {transform:translate(170%,-41%)  scaleY(.115)}
+  31%,38% {transform:translate(170%,-41%)  scaleY(1)}
+  41%,49% {transform:translate(157%,3%)    scaleY(1)}
+  52%,60% {transform:translate(70%,0%)     scaleY(1)}
+  63%,72% {transform:translate(94%,-59%)   scaleY(1)}
+  73%     {transform:translate(94%,-59%)   scaleY(.115)}
+  74%,79% {transform:translate(94%,-59%)   scaleY(1)}
+  82%,88% {transform:translate(176%,-9%)   scaleY(1)}
+  91%,100%{transform:translate(40%,-41%)   scaleY(1)}
+}
+@media(prefers-reduced-motion:reduce){.logo .pupille{animation:none}}
+</style>
+</head>
+<body>
+
+<a class="logo" href="/" aria-label="Accueil"><span class="pupille"></span></a>
+
+<div class="label" data-en="(404) — Not found">(404) — Page introuvable</div>
+<h1>404</h1>
+<p data-en="This page does not exist, or no longer does. The eye is still looking.">Cette page n'existe pas, ou n'existe plus. L'œil cherche encore.</p>
+<a class="retour" href="/" data-en="Back to home">Retour à l'accueil</a>
+
+<script>
+// Pas de bouton de langue ici : on suit simplement le navigateur.
+if (!(navigator.languages || [navigator.language || 'en'])
+      .some(l => l.toLowerCase().startsWith('fr'))) {
+  document.documentElement.lang = 'en';
+  document.querySelectorAll('[data-en]').forEach(el => el.textContent = el.dataset.en);
+}
+</script>
+</body>
+</html>
