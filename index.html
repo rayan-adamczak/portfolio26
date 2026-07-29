@@ -374,14 +374,24 @@ section.in .laptop-scene{animation:allumage .9s steps(1,end)}
 }
 .carrousel::-webkit-scrollbar{display:none}
 .carrousel.drag{scroll-snap-type:none}
+/* L'arrondi vient de `clip-path` et non du seul couple
+   `border-radius` + `overflow:hidden`. L'image porte en permanence un
+   `filter` et, au survol, un `transform` : les deux la placent sur sa
+   propre couche de composition. Le rognage arrondi d'un ancêtre est
+   alors appliqué par le compositeur, qui ne lisse pas les bords — d'où
+   les angles en escalier. `clip-path`, lui, reste antialiasé.
+   L'`overflow:hidden` est conservé : il borne la mise en page, le
+   clip-path ne fait que dessiner le bord. */
 .vignette{
   flex:0 0 auto;scroll-snap-align:start;
   background:var(--encre);position:relative;user-select:none;
   border-radius:var(--rayon);overflow:hidden;
+  clip-path:inset(0 round var(--rayon));
 }
 .vignette .cadre{
   height:clamp(260px,44vh,520px);overflow:hidden;background:var(--noir);
   border-radius:var(--rayon);
+  clip-path:inset(0 round var(--rayon));
 }
 /* Désaturé au repos, couleur au survol : la couleur d'un mockup entre
    toujours en conflit avec le rouge de la DA. On la garde pour le focus. */
