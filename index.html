@@ -483,12 +483,13 @@ a.job{position:relative}
    sur la ligne survolée sans règle en plus. */
 a.job::after{
   content:'';position:absolute;right:16px;top:50%;
-  /* Simple centrage : le tracé remplit son viewBox de façon symétrique,
-     donc le centre de la boîte est aussi son centre optique. La correction
-     de .23em qui traînait ici datait du caractère « ↗ », dont l'encre ne
-     tombait pas au milieu de sa boîte — cumulée avec le tracé centré, elle
-     poussait la flèche 3 px trop bas. */
-  transform:translateY(-50%);
+  /* Le tracé remplit son viewBox, son centre de boîte est donc son centre
+     optique. Reste que le milieu de la ligne n'est pas le milieu des
+     capitales : mesuré, la flèche centrée sur la boîte tombe 1,75 px
+     au-dessus du milieu de « Product Designer », soit .135em à ce corps.
+     (La correction précédente de .23em visait le centre d'encre, qui
+     inclut les jambages et descend trop bas.) */
+  transform:translateY(calc(-50% + .135em));
   width:22px;height:22px;background-color:currentColor;
   -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='square'%3E%3Cpath d='M4 20L20 4M8 4h12v12'/%3E%3C/svg%3E");
   mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='square'%3E%3Cpath d='M4 20L20 4M8 4h12v12'/%3E%3C/svg%3E");
@@ -498,8 +499,9 @@ a.job::after{
   opacity:0;transition:opacity .35s var(--ease);pointer-events:none;
 }
 a.job:hover::after{opacity:1}
-/* la réserve suit la taille de la flèche, sinon le texte passe dessous */
-a.job:hover > span:last-child{padding-right:30px}
+/* La réserve dépasse la flèche de sa propre largeur : à 30 px il ne restait
+   que 8 px entre le texte et elle, elles se touchaient presque. */
+a.job:hover > span:last-child{padding-right:42px}
 a.job > span:last-child{transition:padding-right .35s var(--ease)}
 /* même règle de survol pour les lignes non cliquables */
 .job{display:grid;grid-template-columns:130px 1fr auto;gap:20px;
@@ -704,8 +706,8 @@ if (location.protocol === 'file:') {
   <div class="hero-main">
     <div class="hero-text">
       <div class="label" data-en="(001) — Portfolio">(001) — Portfolio</div>
-      <h1>Product<br>Designer</h1>
-      <div class="sub">Rayan Adamczak</div>
+      <h1>Rayan<br>Adamczak</h1>
+      <div class="sub">Product Designer</div>
     </div>
     <!-- les .glitch sont les bandes de la salve : décoratives, et déjà
          couvertes par le role="img" du parent -->
