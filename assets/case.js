@@ -9,6 +9,12 @@ document.querySelectorAll('a,button').forEach(el => {
   el.addEventListener('pointerenter', () => cur.classList.add('big'));
   el.addEventListener('pointerleave', () => cur.classList.remove('big'));
 });
+// Les visuels sont les seules surfaces claires de la page : c'est là, et
+// seulement là, que le mélange `difference` virerait le rouge au cyan.
+document.querySelectorAll('figure').forEach(el => {
+  el.addEventListener('pointerenter', () => cur.classList.add('sur-visuel'));
+  el.addEventListener('pointerleave', () => cur.classList.remove('sur-visuel'));
+});
 
 // ── Sommaire : section courante ───────────────────────────────
 // On retient le bloc le plus haut encore visible : plusieurs sections
@@ -42,10 +48,18 @@ if (blocs.length) {
 // clip-path:inset(0 0 100%) a une aire d'intersection nulle et ne
 // déclencherait jamais l'observateur.
 document.documentElement.classList.add('js-reveal');
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-}), {threshold: 0, rootMargin: '0px 0px -10% 0px'});
-document.querySelectorAll('.bloc,.entete').forEach(el => io.observe(el));
+// Arrivée par retour ou avance dans l'historique : la page est déjà
+// connue, on l'affiche telle quelle. Sinon la transition entre documents
+// photographierait une page vide et le retour donnerait un écran blanc.
+const nav = performance.getEntriesByType('navigation')[0];
+if (nav && nav.type === 'back_forward') {
+  document.querySelectorAll('.bloc,.entete').forEach(el => el.classList.add('in'));
+} else {
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold: 0, rootMargin: '0px 0px -10% 0px'});
+  document.querySelectorAll('.bloc,.entete').forEach(el => io.observe(el));
+}
 setTimeout(() =>
   document.querySelectorAll('.bloc:not(.in),.entete:not(.in)')
     .forEach(el => el.classList.add('in')), 1500);
