@@ -330,7 +330,9 @@ figcaption{
   background:var(--rouge);color:var(--noir);
   padding:clamp(56px,9vh,120px) max(var(--marge),calc((100% - var(--maxw))/2 + var(--marge)));
 }
-.contact .label{color:var(--noir);opacity:.6}
+/* .6 donnait #6c1218 sur le rouge, soit 3.15:1 — sous le seuil pour du
+   11 px. .85 monte à 4.61:1 en gardant le label en retrait. */
+.contact .label{color:var(--noir);opacity:.85}
 .contact h2{
   font-family:var(--display);font-weight:800;text-transform:uppercase;
   font-size:clamp(36px,5.4vw,110px);line-height:.9;letter-spacing:-.035em;margin-top:18px;

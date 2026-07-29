@@ -539,7 +539,9 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
 .contact .laptop{flex:0 0 auto;width:min(30vw,460px)}
 
 /* sur fond rouge le gris du libellé tombait à 2:1 de contraste */
-.contact .label{color:var(--noir);opacity:.6}
+/* .6 donnait #6c1218 sur le rouge, soit 3.15:1 — sous le seuil pour du
+   11 px. .85 monte à 4.61:1 en gardant le label en retrait. */
+.contact .label{color:var(--noir);opacity:.85}
 .contact h2{font-family:var(--display);font-weight:800;text-transform:uppercase;
   font-size:clamp(42px,7vw,168px);line-height:.86;letter-spacing:-.035em}
 .contact .links{display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;font-family:var(--mono);
