@@ -186,9 +186,15 @@ section{
 }
 .hero-text{min-width:0}
 /* l'interligne .86 fait remonter les capitales dans la ligne du dessus */
-.hero-text .label{margin-bottom:clamp(12px,1.6vh,24px)}
+/* Les deux écarts autour du nom se mesurent sur les capitales, pas sur les
+   boîtes : avec line-height .86 la boîte du h1 est plus courte que ses
+   glyphes, et l'espace résiduel sous la dernière ligne vaut ~0,3 fois le
+   corps. Se fier aux marges donnait 15 px au-dessus pour 34 px en dessous.
+   La marge est donc exprimée en vw, comme le corps du h1, pour que les
+   deux écarts restent égaux à toutes les largeurs. */
+.hero-text .label{margin-bottom:clamp(12px,1.85vw,42px)}
 .hero .sub{
-  font-size:clamp(17px,2vw,38px);color:var(--craie);margin-top:6px;
+  font-size:clamp(17px,2vw,38px);color:var(--craie);margin-top:0;
   letter-spacing:-.01em;font-weight:500;
 }
 .hero .meta{display:flex;gap:40px;flex-wrap:wrap;margin-top:56px}
@@ -465,7 +471,13 @@ section.in .laptop-scene{animation:allumage .9s steps(1,end)}
 .index{margin-top:40px}
 
 /* ── Parcours ─────────────────────────────────────────────── */
+/* `align-items:center` et non l'étirement par défaut : le nom de la boîte
+   est en 17 px quand le reste de la ligne est en 13 px, donc la cellule du
+   milieu est plus haute. Étirées, les deux autres colonnes calaient leur
+   texte en haut de la ligne — d'où l'impression d'un bloc non centré entre
+   les deux filets, et d'une flèche décalée. */
 a.job{display:grid;grid-template-columns:130px 1fr auto;gap:20px;padding:20px 16px 20px 0;
+  align-items:center;
   border-bottom:1px solid var(--encre);font-family:var(--mono);font-size:13px;
   transition:background .35s var(--ease),padding-left .35s var(--ease)}
 a.job:first-of-type{border-top:1px solid var(--encre)}
@@ -504,7 +516,7 @@ a.job:hover::after{opacity:1}
 a.job:hover > span:last-child{padding-right:42px}
 a.job > span:last-child{transition:padding-right .35s var(--ease)}
 /* même règle de survol pour les lignes non cliquables */
-.job{display:grid;grid-template-columns:130px 1fr auto;gap:20px;
+.job{display:grid;grid-template-columns:130px 1fr auto;gap:20px;align-items:center;
   padding:20px 16px 20px 0;border-bottom:1px solid var(--encre);
   font-family:var(--mono);font-size:13px}
 .job b{font-family:var(--texte);font-size:17px;font-weight:700;letter-spacing:-.01em}
