@@ -60,6 +60,50 @@ img,video{max-width:100%;display:block}
    `cursor:pointer` sur les liens et les boutons, et une règle l'emporte
    sur un héritage. Sans ça la flèche native reste visible. */
 a,button{cursor:none}
+/* Sur un visuel, le clic n'ouvre pas une page : il agrandit l'image.
+   Un « + » le dit, comme sur le carrousel de l'accueil. */
+.cur::before,.cur::after{
+  content:'';position:absolute;top:50%;left:50%;background:var(--noir);
+  transform:translate(-50%,-50%) scale(0);
+  transition:transform .25s var(--ease);
+}
+.cur::before{width:18px;height:2px}
+.cur::after{width:2px;height:18px}
+.cur.zoom::before,.cur.zoom::after{transform:translate(-50%,-50%) scale(1)}
+
+/* ── Visionneuse ──────────────────────────────────────────────
+   Construite par case.js pour ne pas la tripler dans les trois pages. */
+.loupe{
+  position:fixed;inset:0;z-index:200;background:rgba(10,10,10,.94);
+  display:grid;place-items:center;padding:clamp(20px,5vw,72px);
+  opacity:0;visibility:hidden;
+  /* visibility bascule instantanément à l'ouverture (sinon le bouton
+     n'est pas focusable) et attend la fin du fondu à la fermeture. */
+  transition:opacity .4s var(--ease),visibility 0s linear .4s;
+  backdrop-filter:blur(8px);
+}
+.loupe[open]{opacity:1;visibility:visible;transition:opacity .4s var(--ease),visibility 0s}
+.loupe img{
+  max-width:100%;max-height:80vh;display:block;object-fit:contain;
+  border-radius:var(--rayon);clip-path:inset(0 round var(--rayon));
+}
+.loupe-barre{
+  position:absolute;top:clamp(18px,3vw,34px);left:var(--marge);right:var(--marge);
+  display:flex;justify-content:space-between;gap:20px;align-items:flex-start;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gris);
+}
+.loupe-barre b{color:var(--craie);font-weight:400}
+.loupe button{
+  font:inherit;letter-spacing:.14em;color:var(--gris);background:none;
+  border:1px solid var(--encre);padding:8px 14px;cursor:none;
+  transition:color .3s var(--ease),border-color .3s var(--ease);
+}
+.loupe button:hover{color:var(--rouge);border-color:var(--rouge)}
+.loupe-nav{
+  position:absolute;bottom:clamp(18px,3vw,34px);left:50%;transform:translateX(-50%);
+  display:flex;gap:10px;
+}
 
 /* ── Chrome ───────────────────────────────────────────────── */
 /* Même œil que la page d'accueil : c'est lui le retour. */
@@ -184,9 +228,15 @@ figure{margin-top:clamp(30px,4vh,56px);max-width:var(--texte-maxw)}
    et comme l'arrondi découpait la boîte et non l'image, le visuel gardait
    ses angles droits à l'intérieur du cadre. Avec largeur et hauteur libres,
    la boîte épouse l'image : plus de vide, et l'arrondi rogne le visuel. */
+/* `clip-path` en plus du `border-radius` : la révélation au scroll pose un
+   clip-path et une transition d'opacité sur les blocs, ce qui place leur
+   contenu sur une couche de composition. Le rognage arrondi y est alors
+   appliqué par le compositeur, qui ne lisse pas les bords — les angles
+   ressortent en escalier. `clip-path` reste antialiasé. */
 figure img,figure video{
   display:block;max-width:100%;width:auto;height:auto;margin-inline:auto;
   background:var(--encre);border-radius:var(--rayon);
+  clip-path:inset(0 round var(--rayon));
 }
 figure img{max-height:76vh}
 .plein,.duo figure,.cote figure{max-width:none}
@@ -246,8 +296,25 @@ figcaption{
 .suivant{
   display:block;border-top:1px solid var(--encre);padding:clamp(56px,9vh,110px) 0;
   transition:background .35s var(--ease),padding-left .35s var(--ease);
+  position:relative;
 }
 .suivant:hover{background:var(--rouge);color:var(--noir);padding-left:24px}
+/* Flèche dessinée et non un caractère : les glyphes fléchés ne partagent
+   pas les métriques du texte, centrer leur boîte ne les centre pas.
+   Le tracé remplit son viewBox, donc centrer la boîte suffit, et
+   `currentColor` la fait passer au noir sur le survol rouge. */
+.suivant::after{
+  content:'';position:absolute;top:50%;right:clamp(16px,2.4vw,34px);
+  transform:translateY(-50%);
+  width:clamp(30px,3.4vw,52px);aspect-ratio:1;background-color:currentColor;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='square'%3E%3Cpath d='M3 12h18M13.5 4.5L21 12l-7.5 7.5'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='square'%3E%3Cpath d='M3 12h18M13.5 4.5L21 12l-7.5 7.5'/%3E%3C/svg%3E");
+  -webkit-mask-size:contain;mask-size:contain;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center;
+  transition:transform .35s var(--ease);
+}
+.suivant:hover::after{transform:translateY(-50%) translateX(10px)}
 .suivant h3{
   font-family:var(--display);font-weight:800;text-transform:uppercase;
   font-size:clamp(30px,5vw,96px);letter-spacing:-.035em;line-height:1;margin-top:14px;
