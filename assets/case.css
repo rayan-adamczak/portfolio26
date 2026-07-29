@@ -260,7 +260,11 @@ figcaption{
 
 /* pleine largeur, hors colonne de texte */
 .plein{margin-inline:calc(-1 * var(--marge))}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+/* La respiration passe de la figure au conteneur : les figures internes
+   sont remises à zéro, donc sans marge ici le duo se collait au paragraphe
+   au-dessus. C'était le seul bloc de contenu à ne pas en avoir. */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  margin-top:clamp(30px,4vh,56px)}
 .duo figure{margin-top:0}
 
 /* ── Sommaire fixe ────────────────────────────────────────────
