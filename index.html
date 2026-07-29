@@ -548,6 +548,17 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
   font-size:13px;letter-spacing:.1em;text-transform:uppercase}
 .contact .links a{border-bottom:2px solid var(--noir);padding-bottom:3px}
 .contact .links a:hover{background:var(--noir);color:var(--rouge);border-color:transparent}
+/* Le noir plein et non une opacité : à 11 px il faut 4.5:1, et le noir
+   éclairci par transparence sur ce rouge n'y arrive qu'à partir de .85.
+   Autant garder la couleur franche, la hiérarchie passe par la taille. */
+.contact .pied{
+  margin-top:clamp(52px,9vh,110px);padding-top:20px;
+  border-top:1px solid var(--noir);
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:16px 32px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--noir);
+}
 
 /* ── Reveal au scroll ─────────────────────────────────────── */
 /* état masqué posé par JS (.js-reveal sur <html>) : sans JS tout reste visible */
@@ -882,6 +893,12 @@ if (location.protocol === 'file:') {
       <div class="laptop dither" id="laptop" role="img" aria-label="Illustration d'ordinateur portable en trame 1-bit"></div>
     </div>
   </div>
+  <!-- Pied de section, pas pied de page : il vit dans le bloc rouge et ne
+       redouble pas les liens de contact, qui sont juste au-dessus. -->
+  <footer class="pied">
+    <span>rayan.design</span>
+    <span data-en="PP Neue Machina · Space Grotesk · Space Mono — hand-coded">PP Neue Machina · Space Grotesk · Space Mono — écrit à la main</span>
+  </footer>
 </section>
 
 </main>
