@@ -556,9 +556,10 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
    éclairci par transparence sur ce rouge n'y arrive qu'à partir de .85.
    Autant garder la couleur franche, la hiérarchie passe par la taille. */
 .contact .pied{
-  margin-top:clamp(52px,9vh,110px);padding-top:20px;
-  /* Pas de padding ici : la section porte déjà son propre bas de page.
-     En cumulant les deux, le rouge continuait sur 260 px de vide. */
+  /* Autant d'air sous le pied qu'entre le filet et lui. La section perd
+     donc son padding bas — sinon il s'ajoutait et le rouge continuait
+     sur une centaine de pixels de vide. */
+  margin-top:clamp(52px,9vh,110px);padding:20px 0;
   border-top:1px solid var(--noir);
   /* Grille et non `space-between` : avec trois éléments de largeurs
      inégales, l'espace réparti ne place pas l'œil au milieu. Les deux
@@ -567,6 +568,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
   font-family:var(--mono);font-size:11px;letter-spacing:.12em;
   text-transform:uppercase;color:var(--noir);
 }
+.contact{padding-bottom:0}
 .contact .pied > :last-child{justify-self:end}
 /* L'œil inversé : sur le rouge, c'est le carré qui passe au noir et la
    pupille au rouge. Fixe — il ne scrute que dans l'en-tête. */
