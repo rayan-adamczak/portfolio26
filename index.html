@@ -257,13 +257,18 @@ section{
   background-size:100% 300%;
   background-position:0 -100%;
   transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
-  /* Pas de transition pendant le survol : elle amortissait chaque
+  /* Pas de transition pendant le suivi : elle amortissait chaque
      mouvement du pointeur et donnait cette impression de laptop qui
      rame. Elle ne sert qu'au retour à plat. */
   transition:transform .6s var(--ease);
   will-change:transform;
 }
-.contact-main:hover .laptop{animation:balayage 1.5s var(--ease);transition:none}
+/* `.suit` est posée par le script tant que le pointeur est dans la zone.
+   Le lier au survol de .contact-main ne marchait plus une fois la zone
+   d'écoute élargie : entre les deux, chaque mouvement relançait une
+   transition de 0,6 s. */
+.contact .laptop.suit{transition:none}
+.contact-main:hover .laptop{animation:balayage 1.5s var(--ease)}
 @keyframes balayage{
   from{background-position:0 -100%}
   to  {background-position:0 200%}
@@ -456,11 +461,24 @@ a.job:hover b{color:var(--noir)}
    sa largeur, ce qui décalait le point médian selon la longueur du nom.
    Elle passe en absolu — zéro impact sur le flux. */
 a.job{position:relative}
+/* Flèche dessinée, plus le caractère « ↗ ». Dans Space Mono ce glyphe ne
+   descend pas jusqu'à la ligne de base — mesuré, son centre d'encre est
+   5 px plus haut que celui du texte — donc centrer sa boîte ne le centre
+   pas, lui. Le tracé remplit son viewBox de façon symétrique : centrer la
+   boîte suffit. La couleur suit `currentColor`, elle passe donc au noir
+   sur la ligne survolée sans règle en plus. */
 a.job::after{
-  content:'↗';position:absolute;right:16px;top:50%;transform:translateY(-50%);
-  /* la flèche héritait du corps de la ligne — 13 px de mono, illisible
-     comme signal. Elle a sa propre taille. */
-  font-size:24px;line-height:1;
+  content:'';position:absolute;right:16px;top:50%;
+  /* Le centre de la boîte n'est pas le centre optique du texte : les bas
+     de casse font descendre l'encre sous le milieu de la ligne. Mesuré à
+     3 px pour 13 px de corps, soit .23em — l'écart suit donc la taille. */
+  transform:translateY(calc(-50% + .23em));
+  width:22px;height:22px;background-color:currentColor;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='square'%3E%3Cpath d='M4 20L20 4M8 4h12v12'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='square'%3E%3Cpath d='M4 20L20 4M8 4h12v12'/%3E%3C/svg%3E");
+  -webkit-mask-size:contain;mask-size:contain;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center;
   opacity:0;transition:opacity .35s var(--ease);pointer-events:none;
 }
 a.job:hover::after{opacity:1}
@@ -575,7 +593,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
   .col{padding:22px 18px}
 
   a.job,.job{grid-template-columns:1fr;gap:6px;padding:20px 12px 20px 0}
-  a.job::after{top:18px;transform:none;font-size:19px}
+  a.job::after{top:20px;transform:none;width:18px;height:18px}
   a.job:hover{padding-left:12px}
   a.job:hover > span:last-child{padding-right:0}
 
@@ -942,15 +960,29 @@ addEventListener('resize', () => {
 // Le laptop s'incline vers le curseur. Amplitude faible (±7°) : au-delà
 // on lit une maquette 3D, pas un objet posé.
 const laptop = document.getElementById('laptop');
-const scene = document.querySelector('.contact-main');
-scene.addEventListener('pointermove', e => {
+const scene = document.querySelector('.laptop-scene');
+const zone = document.querySelector('.contact');
+// La zone d'écoute est la section entière : avant, il fallait frôler le
+// laptop pour que quoi que ce soit se passe. L'inclinaison se mesure
+// depuis le centre du laptop et se borne à un rayon, sinon un pointeur à
+// l'autre bout de la section renverrait un angle absurde.
+// Le repère vient de .laptop-scene et non du laptop : getBoundingClientRect
+// d'un élément pivoté renvoie sa boîte transformée, qui bouge à chaque
+// image — le suivi se serait mis à osciller tout seul.
+const borne = v => Math.max(-1, Math.min(1, v));
+zone.addEventListener('pointermove', e => {
   const r = scene.getBoundingClientRect();
-  const px = (e.clientX - r.left) / r.width  - .5;
-  const py = (e.clientY - r.top)  / r.height - .5;
+  const rayon = Math.max(r.width, r.height) * 1.3;
+  const px = borne((e.clientX - (r.left + r.width  / 2)) / rayon);
+  const py = borne((e.clientY - (r.top  + r.height / 2)) / rayon);
+  laptop.classList.add('suit');
   laptop.style.setProperty('--ry', (px * 14).toFixed(2) + 'deg');
   laptop.style.setProperty('--rx', (-py * 9).toFixed(2) + 'deg');
 });
-scene.addEventListener('pointerleave', () => {
+zone.addEventListener('pointerleave', () => {
+  // On rend la transition avant de remettre à plat : le retour se fait en
+  // 0,6 s au lieu de claquer d'un coup.
+  laptop.classList.remove('suit');
   laptop.style.setProperty('--ry', '0deg');
   laptop.style.setProperty('--rx', '0deg');
 });
