@@ -621,7 +621,11 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
   .vignette.actif img{filter:none;transform:scale(1.02)}
   .vignette.actif figcaption b{color:var(--rouge)}
 
+  /* Trois colonnes dans une grille à deux : la quatrième cellule restait
+     vide et laissait voir le fond --encre du conteneur, qui sert à
+     dessiner les filets d'1 px. La dernière occupe donc toute la ligne. */
   .cols{grid-template-columns:1fr 1fr}
+  .col:last-child{grid-column:1/-1}
   .col{padding:22px 18px}
 
   a.job,.job{grid-template-columns:1fr;gap:6px;padding:20px 12px 20px 0}
@@ -634,8 +638,10 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
   /* un lien par ligne : trois pastilles côte à côte se cassaient en
      trois lignes bancales */
   .contact .links{flex-direction:column;align-items:flex-start;gap:12px;font-size:12px}
-  .laptop-scene{padding:0;align-self:center}
-  .contact .laptop{width:min(78vw,340px)}
+  /* Aligné à gauche comme le reste de la colonne, et décollé des liens :
+     centré et large, il venait toucher le « CV — PDF ». */
+  .laptop-scene{padding:0;align-self:flex-start;margin-top:clamp(28px,7vw,52px)}
+  .contact .laptop{width:min(58vw,260px)}
 
   .status{font-size:10px;gap:6px}
   .marquee .passe{font-size:11px;gap:32px;padding-right:32px}
