@@ -1221,5 +1221,10 @@ document.querySelectorAll('section').forEach(s=>io.observe(s));
 // filet de sécurité : si l'observer ne répond pas, on affiche tout
 setTimeout(()=>document.querySelectorAll('section:not(.in)').forEach(s=>s.classList.add('in')),1500);
 </script>
+
+<!-- Statistiques : agrégat seulement, ni cookie ni IP conservée, donc pas
+     de bandeau de consentement. -->
+<script data-goatcounter="https://reikurooo.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -93,5 +93,10 @@ if (!(navigator.languages || [navigator.language || 'en'])
   document.querySelectorAll('[data-en]').forEach(el => el.textContent = el.dataset.en);
 }
 </script>
+
+<!-- Statistiques : agrégat seulement, ni cookie ni IP conservée, donc pas
+     de bandeau de consentement. -->
+<script data-goatcounter="https://reikurooo.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
