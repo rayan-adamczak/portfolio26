@@ -781,7 +781,7 @@ if (location.protocol === 'file:') {
   </div>
   <div class="meta">
     <div><div class="label" data-en="Focus">Focus</div><span data-en="Mobile app · Design system · UX/UI">Mobile app · Design system · UX/UI</span></div>
-    <div><div class="label" data-en="Status">Statut</div><span data-en="Freelance · open to work">Freelance · dispo missions</span></div>
+    <div><div class="label" data-en="Status">Statut</div><span data-en="Freelance">Freelance</span></div>
     <div><div class="label" data-en="Based">Base</div><span data-en="France &amp; Remote">France &amp; Remote</span></div>
   </div>
 </section>
@@ -971,9 +971,24 @@ window.ARIA = {
 <script>
 // curseur
 const cur=document.getElementById('cur'), peek=document.getElementById('peek');
-addEventListener('pointermove',e=>{
-  cur.style.transform=`translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`;
-  peek.style.left=e.clientX+'px'; peek.style.top=e.clientY+'px';
+// Une seule écriture par image. Les événements pointeur arrivent plus vite
+// que les images — jusqu'à 125 Hz sur une souris à haute fréquence — et
+// `left`/`top` sur .peek forcent un calcul de mise en page à chaque fois.
+// C'est ce qui saccadait le glissement du carrousel, qui se joue dans la
+// même boucle d'événements.
+let peekX = 0, peekY = 0, imagePrevue = false;
+function placePeek(){ peek.style.left = peekX + 'px'; peek.style.top = peekY + 'px'; }
+addEventListener('pointermove', e => {
+  peekX = e.clientX; peekY = e.clientY;
+  if (imagePrevue) return;
+  imagePrevue = true;
+  requestAnimationFrame(() => {
+    imagePrevue = false;
+    cur.style.transform = `translate(${peekX}px,${peekY}px) translate(-50%,-50%)`;
+    // Hors survol d'un projet, .peek est invisible : inutile de payer un
+    // calcul de mise en page pour le déplacer.
+    if (peek.classList.contains('on')) placePeek();
+  });
 });
 // Les vignettes du carrousel s'ouvrent au clic : elles doivent grossir le
 // curseur comme n'importe quel lien, sinon rien n'annonce qu'elles sont
@@ -990,7 +1005,7 @@ document.querySelectorAll('.vignette').forEach(el=>{
 });
 // preview tramée au survol des projets
 document.querySelectorAll('[data-peek]').forEach(el=>{
-  el.addEventListener('pointerenter',()=>peek.classList.add('on'));
+  el.addEventListener('pointerenter',()=>{placePeek();peek.classList.add('on')});
   el.addEventListener('pointerleave',()=>peek.classList.remove('on'));
 });
 // Carrousel : glisser-déposer à la souris. On désactive le snap pendant
