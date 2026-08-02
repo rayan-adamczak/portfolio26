@@ -347,7 +347,9 @@ a.row:hover .num{font-weight:700}
 a.row:hover .tags,a.row:hover .num{color:var(--noir)}
 /* Titre en retrait, statut en rouge : la ligne se lit comme annoncée,
    pas comme disponible. */
-.row.bientot h2{color:var(--gris)}
+/* La marque s'écrit en bas de casse : on lève les capitales que .row h2
+   impose aux autres titres, sinon le nom s'affiche JAQUETTE.APP. */
+.row.bientot h2{color:var(--gris);text-transform:none}
 .row.bientot .etat{color:var(--rouge)}
 .num{font-family:var(--mono);font-size:clamp(10px,.68vw,12px);color:var(--gris);
   letter-spacing:.08em;text-transform:uppercase;text-align:right;max-width:22ch}
@@ -821,8 +823,8 @@ if (location.protocol === 'file:') {
          ce n'est donc pas un <a>, et le survol rouge lui est refusé. -->
     <div class="row bientot">
       <span class="num">004</span>
-      <div><h2>Jaquette.app</h2>
-        <div class="tags" data-en="Web · Dev · Blu-ray &amp; 4K catalogue">Web · Dev · Catalogue Blu-ray &amp; 4K</div></div>
+      <div><h2>jaquette.app</h2>
+        <div class="tags" data-en="Dev · Web · Blu-ray 4K &amp; Steelbooks">Dev · Web · Blu-ray 4K &amp; Steelbooks</div></div>
       <span class="num etat" data-en="Case study coming soon">Étude de cas à venir</span>
     </div>
     <a class="row" href="case-codice-fiscale" data-peek>
