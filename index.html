@@ -330,17 +330,25 @@ section.in .laptop-scene{animation:allumage .9s steps(1,end)}
   align-items:center;padding:28px 12px 28px 0;border-bottom:1px solid var(--encre);
   transition:background .35s var(--ease),color .35s var(--ease),padding-left .35s var(--ease);
 }
-.row:first-of-type{border-top:1px solid var(--encre)}
+/* `:first-of-type` compte par type d'élément : avec un <div> suivi de
+   <a>, deux lignes recevaient le filet du haut. */
+.index > :first-child{border-top:1px solid var(--encre)}
 .row h2{font-family:var(--display);font-weight:800;font-size:clamp(22px,3.6vw,68px);
   text-transform:uppercase;letter-spacing:-.03em;line-height:1}
 /* Les tags se calaient directement sous le titre alors que la grille
    sépare ses lignes de 10 px : même valeur ici pour un rythme régulier. */
 .row .tags{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);
   margin-top:10px}
-.row:hover{background:var(--rouge);color:var(--noir);padding-left:32px}
+/* Réservé aux lignes cliquables : la ligne « à venir » n'est pas un <a>,
+   elle ne doit ni virer au rouge ni suggérer qu'on peut la suivre. */
+a.row:hover{background:var(--rouge);color:var(--noir);padding-left:32px}
 /* la ligne survolée pousse son numéro en gras : repère de lecture */
-.row:hover .num{font-weight:700}
-.row:hover .tags,.row:hover .num{color:var(--noir)}
+a.row:hover .num{font-weight:700}
+a.row:hover .tags,a.row:hover .num{color:var(--noir)}
+/* Titre en retrait, statut en rouge : la ligne se lit comme annoncée,
+   pas comme disponible. */
+.row.bientot h2{color:var(--gris)}
+.row.bientot .etat{color:var(--rouge)}
 .num{font-family:var(--mono);font-size:clamp(10px,.68vw,12px);color:var(--gris);
   letter-spacing:.08em;text-transform:uppercase;text-align:right;max-width:22ch}
 
@@ -642,7 +650,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
   .row{grid-template-columns:1fr;gap:10px;padding:22px 12px}
   .row h2{font-size:clamp(28px,8vw,44px)}
   .row .num{text-align:left;max-width:none}
-  .row:hover{padding-left:12px}
+  a.row:hover{padding-left:12px}
 
   .vignette .cadre{height:clamp(190px,46vw,270px)}
   /* Le survol n'existe pas au doigt : la vignette au centre de l'écran
@@ -693,9 +701,9 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
   .portrait{filter:brightness(1)}
   /* aucun état :hover atteignable au doigt — on neutralise pour éviter
      les états « collés » après un tap */
-  .row:hover,a.job:hover{background:none;color:inherit;padding-left:12px}
-  .row:hover .tags,.row:hover .num,a.job:hover b{color:var(--gris)}
-  .row:hover h2{color:var(--craie)}
+  a.row:hover,a.job:hover{background:none;color:inherit;padding-left:12px}
+  a.row:hover .tags,a.row:hover .num,a.job:hover b{color:var(--gris)}
+  a.row:hover h2{color:var(--craie)}
   a.job:hover b{color:var(--craie)}
   a.job::after{opacity:.5}
   .col li::before{width:16px;margin-right:10px}
@@ -809,11 +817,19 @@ if (location.protocol === 'file:') {
 <section>
   <div class="label" data-en="(003) — Case studies">(003) — Case studies</div>
   <div class="index">
-    <a class="row" href="case-parking-access" data-peek>
-      <span class="num">001</span>
-      <div><h2>Parking Access</h2>
-        <div class="tags" data-en="Electra · 4 months · Mobile &amp; app · B2C">Electra · 4 mois · Mobile &amp; app · B2C</div></div>
-      <span class="num" data-en="Barrier exit, no payment">Sortie de parking sans paiement</span>
+    <!-- Du plus récent au plus ancien. Jaquette n'a pas encore de page :
+         ce n'est donc pas un <a>, et le survol rouge lui est refusé. -->
+    <div class="row bientot">
+      <span class="num">004</span>
+      <div><h2>Jaquette</h2>
+        <div class="tags" data-en="Personal project · Web · Blu-ray &amp; 4K catalogue">Projet personnel · Web · Catalogue Blu-ray &amp; 4K</div></div>
+      <span class="num etat" data-en="Case study coming soon">Étude de cas à venir</span>
+    </div>
+    <a class="row" href="case-codice-fiscale" data-peek>
+      <span class="num">003</span>
+      <div><h2>Codice Fiscale</h2>
+        <div class="tags" data-en="Electra · 2 months · Mobile &amp; app · B2C/B2B">Electra · 2 mois · Mobile &amp; app · B2C/B2B</div></div>
+      <span class="num" data-en="Italian market opened">Ouverture du marché italien</span>
     </a>
     <a class="row" href="case-retro" data-peek>
       <span class="num">002</span>
@@ -821,11 +837,11 @@ if (location.protocol === 'file:') {
         <div class="tags" data-en="Electra · 3 weeks · Mobile · B2C">Electra · 3 semaines · Mobile · B2C</div></div>
       <span class="num" data-en="33 % adoption — 1,000+ users">33 % d'adoption — 1 000+ utilisateurs</span>
     </a>
-    <a class="row" href="case-codice-fiscale" data-peek>
-      <span class="num">003</span>
-      <div><h2>Codice Fiscale</h2>
-        <div class="tags" data-en="Electra · 2 months · Mobile &amp; app · B2C/B2B">Electra · 2 mois · Mobile &amp; app · B2C/B2B</div></div>
-      <span class="num" data-en="Italian market opened">Ouverture du marché italien</span>
+    <a class="row" href="case-parking-access" data-peek>
+      <span class="num">001</span>
+      <div><h2>Parking Access</h2>
+        <div class="tags" data-en="Electra · 4 months · Mobile &amp; app · B2C">Electra · 4 mois · Mobile &amp; app · B2C</div></div>
+      <span class="num" data-en="Barrier exit, no payment">Sortie de parking sans paiement</span>
     </a>
   </div>
 </section>
@@ -962,7 +978,7 @@ addEventListener('pointermove',e=>{
 // Les vignettes du carrousel s'ouvrent au clic : elles doivent grossir le
 // curseur comme n'importe quel lien, sinon rien n'annonce qu'elles sont
 // cliquables.
-document.querySelectorAll('a,.row,.vignette').forEach(el=>{
+document.querySelectorAll('a,.vignette').forEach(el=>{
   el.addEventListener('pointerenter',()=>cur.classList.add('big'));
   el.addEventListener('pointerleave',()=>cur.classList.remove('big'));
 });
