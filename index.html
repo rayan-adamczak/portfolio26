@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://rayan.design/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Rayan Adamczak — Product Designer">
-<meta property="og:description" content="Applications mobiles, design system, UX/UI. Freelance, dispo missions.">
+<meta property="og:description" content="Applications mobiles, design system, UX/UI. Freelance à Brest, France &amp; remote.">
 <meta property="og:image" content="https://rayan.design/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -381,11 +381,14 @@ a.row:hover .tags,a.row:hover .num{color:var(--noir)}
 .peek.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 
 /* ── Carrousel d'aperçus ──────────────────────────────────────
-   Défilement horizontal libre : molette, drag à la souris, ou swipe.
-   `scroll-snap` cale chaque vignette sans bloquer le geste. */
+   Défilement horizontal libre : drag à la souris, swipe, ou geste
+   horizontal du trackpad.
+   Pas de `scroll-snap` : au relâchement il ramenait la vue jusqu'à caler
+   une vignette sur le bord gauche, d'un coup sec. Le glissement doit
+   s'arrêter là où on le lâche. */
 .carrousel{
   margin-top:40px;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x proximity;scrollbar-width:none;
+  scrollbar-width:none;
   /* `cursor:none` et non `grab` : le curseur custom est la seule marque
      de survol du site, une flèche native ici jurerait. */
   padding-bottom:2px;cursor:none;
@@ -393,7 +396,6 @@ a.row:hover .tags,a.row:hover .num{color:var(--noir)}
   margin-right:calc(-1 * var(--marge));
 }
 .carrousel::-webkit-scrollbar{display:none}
-.carrousel.drag{scroll-snap-type:none}
 /* L'arrondi vient de `clip-path` et non du seul couple
    `border-radius` + `overflow:hidden`. L'image porte en permanence un
    `filter` et, au survol, un `transform` : les deux la placent sur sa
@@ -403,7 +405,7 @@ a.row:hover .tags,a.row:hover .num{color:var(--noir)}
    L'`overflow:hidden` est conservé : il borne la mise en page, le
    clip-path ne fait que dessiner le bord. */
 .vignette{
-  flex:0 0 auto;scroll-snap-align:start;
+  flex:0 0 auto;
   background:var(--encre);position:relative;user-select:none;
   border-radius:var(--rayon);overflow:hidden;
   clip-path:inset(0 round var(--rayon));
@@ -793,13 +795,13 @@ if (location.protocol === 'file:') {
   <div class="track">
     <div class="passe">
       <span>Product Designer</span><span>✱</span>
-      <span data-en="Available for freelance">Available for freelance</span><span>✱</span>
+      <span data-en="Freelance">Freelance</span><span>✱</span>
       <span>Brest, FR</span><span>✱</span>
       <span>Neocity → Electra → Brand Appart → Digifeel</span><span>✱</span>
     </div>
     <div class="passe" aria-hidden="true">
       <span>Product Designer</span><span>✱</span>
-      <span data-en="Available for freelance">Available for freelance</span><span>✱</span>
+      <span data-en="Freelance">Freelance</span><span>✱</span>
       <span>Brest, FR</span><span>✱</span>
       <span>Neocity → Electra → Brand Appart → Digifeel</span><span>✱</span>
     </div>
@@ -1024,14 +1026,13 @@ car.addEventListener('pointerdown', e => {
   // Au doigt, le défilement natif fait déjà le travail.
   if (e.pointerType === 'touch') return;
   tire = true; aDragge = false; xDepart = e.clientX; scrollDepart = car.scrollLeft;
-  car.classList.add('drag');
 });
 addEventListener('pointermove', e => {
   if (!tire) return;
   if (Math.abs(e.clientX - xDepart) > 6) aDragge = true;
   car.scrollLeft = scrollDepart - (e.clientX - xDepart);
 });
-const relache = () => { tire = false; car.classList.remove('drag'); };
+const relache = () => { tire = false; };
 addEventListener('pointerup', relache);
 addEventListener('pointercancel', relache);
 // Pas de détournement de la molette verticale. L'ancienne version faisait
