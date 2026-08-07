@@ -752,6 +752,25 @@ if (location.protocol === 'file:') {
   document.write('<link rel="stylesheet" href="assets/masks.css">');
 }
 </script>
+<!-- Donnée structurée : elle relie le site à une personne, pas seulement à
+     des mots-clés. C'est le signal utile sur une requête au nom. Rien ici
+     n'est décoratif — tout est vérifiable sur la page. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rayan Adamczak",
+  "jobTitle": "Product Designer",
+  "url": "https://rayan.design",
+  "sameAs": ["https://www.linkedin.com/in/rayan-adamczak/"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brest",
+    "addressCountry": "FR"
+  },
+  "knowsAbout": ["Product design", "Design system", "UX/UI", "Mobile app design"]
+}
+</script>
 </head>
 <body>
 <div class="grain"></div>
