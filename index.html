@@ -345,10 +345,6 @@ a.row:hover{background:var(--rouge);color:var(--noir);padding-left:32px}
 /* la ligne survolée pousse son numéro en gras : repère de lecture */
 a.row:hover .num{font-weight:700}
 a.row:hover .tags,a.row:hover .num{color:var(--noir)}
-/* Titre en retrait, statut en rouge : la ligne se lit comme annoncée,
-   pas comme disponible. */
-.row.bientot h2{color:var(--gris)}
-.row.bientot .etat{color:var(--rouge)}
 .num{font-family:var(--mono);font-size:clamp(10px,.68vw,12px);color:var(--gris);
   letter-spacing:.08em;text-transform:uppercase;text-align:right;max-width:22ch}
 
@@ -846,14 +842,12 @@ if (location.protocol === 'file:') {
         <div class="tags" data-en="Dev · iOS · Wikipedia game">Dev · iOS · Jeu Wikipédia</div></div>
       <span class="num" data-en="On the App Store">Sur l'App Store</span>
     </a>
-    <!-- Jaquette n'a pas encore de page : ce n'est donc pas un <a>, et le
-         survol rouge lui est refusé. -->
-    <div class="row bientot">
+    <a class="row" href="https://jaquette.app" target="_blank" rel="noopener">
       <span class="num">004</span>
       <div><h2>jaquette.app</h2>
         <div class="tags" data-en="Dev · Web · Blu-ray 4K &amp; Steelbooks">Dev · Web · Blu-ray 4K &amp; Steelbooks</div></div>
-      <span class="num etat" data-en="Case study coming soon">Étude de cas à venir</span>
-    </div>
+      <span class="num" data-en="Visit the site">Voir le site</span>
+    </a>
     <a class="row" href="case-codice-fiscale" data-peek>
       <span class="num">003</span>
       <div><h2>Codice Fiscale</h2>
