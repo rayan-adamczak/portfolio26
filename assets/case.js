@@ -9,9 +9,9 @@ document.querySelectorAll('a,button').forEach(el => {
   el.addEventListener('pointerenter', () => cur.classList.add('big'));
   el.addEventListener('pointerleave', () => cur.classList.remove('big'));
 });
-// Sur un visuel, deux choses : le mélange `difference` est neutralisé — les
+// Sur un visuel, deux choses : le mélange `difference` est neutralisé - les
 // visuels sont les seules surfaces claires de la page, le rouge y virerait au
-// cyan — et le curseur prend un « + », le clic agrandissant l'image au lieu
+// cyan - et le curseur prend un « + », le clic agrandissant l'image au lieu
 // d'ouvrir une page.
 document.querySelectorAll('figure').forEach(el => {
   el.addEventListener('pointerenter', () => cur.classList.add('sur-visuel', 'big', 'zoom'));
@@ -93,7 +93,7 @@ setTimeout(() =>
 
   // i18n.js a déjà tourné quand ce script s'exécute : la visionneuse n'est
   // donc pas traduite par lui. On applique la langue nous-mêmes, et on
-  // rejoue au clic sur le bouton — notre écouteur passe après le sien,
+  // rejoue au clic sur le bouton - notre écouteur passe après le sien,
   // donc `lang` est déjà à jour.
   const mots = {
     fr: {fermer: 'Fermer', prec: 'Précédent', suiv: 'Suivant', titre: 'Aperçu'},

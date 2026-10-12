@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rayan Adamczak — Product Designer freelance à Brest</title>
-<meta name="description" content="Product Designer freelance — applications mobiles, design system, UX/UI. Electra, Neocity, Brand Appart, Digifeel. Brest, France &amp; remote.">
+<title>Rayan Adamczak - Product Designer freelance à Brest</title>
+<meta name="description" content="Product Designer freelance - applications mobiles, design system, UX/UI. Electra, Neocity, Brand Appart, Digifeel. Brest, France &amp; remote.">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="canonical" href="https://rayan.design/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Rayan Adamczak — Product Designer">
+<meta property="og:title" content="Rayan Adamczak - Product Designer">
 <meta property="og:description" content="Product Designer freelance à Brest, dispo missions. Applications mobiles, design system, UX/UI.">
 <meta property="og:image" content="https://rayan.design/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -71,8 +71,8 @@ a{color:inherit;text-decoration:none}
 
 /* ── Curseur ──────────────────────────────────────────────── */
 /* `difference` est ce qui rend le curseur lisible sur les surfaces du site :
-   il vire au noir sur le rouge — sans quoi il disparaît sur la ligne de
-   parcours survolée — et reste rouge sur le noir. Son seul défaut est sur
+   il vire au noir sur le rouge - sans quoi il disparaît sur la ligne de
+   parcours survolée - et reste rouge sur le noir. Son seul défaut est sur
    un visuel clair importé, où le rouge s'inverse en cyan : on le neutralise
    alors ponctuellement (voir .zoom plus bas). */
 .cur{
@@ -128,7 +128,7 @@ a,button{cursor:none}
   animation:scrute 9s cubic-bezier(.16,1,.3,1) infinite;
 }
 /* Saccade oculaire : déplacement quasi instantané suivi d'une fixation
-   longue. Les paliers sont volontairement inégaux — un rythme régulier
+   longue. Les paliers sont volontairement inégaux - un rythme régulier
    trahit la boucle. La pupille reste toujours dans la boîte : son bord
    ne dépasse jamais 12 % de marge au plus serré. */
 /* Tout passe par transform : `left`, `top` et `height` déclenchaient un
@@ -152,7 +152,7 @@ a,button{cursor:none}
 }
 /* Le clignement vit dans la pupille elle-même (elle s'écrase sur sa
    hauteur), pas dans un cache rouge par-dessus. Un cache masquait la
-   pupille au lieu de la faire cligner — elle semblait disparaître.
+   pupille au lieu de la faire cligner - elle semblait disparaître.
    Comme tout est dans la même animation, il n'y a plus de désynchro
    possible entre deux boucles. */
 .logo:hover .pupille{animation-play-state:paused}
@@ -221,7 +221,7 @@ section{
   background-color:transparent;
 }
 /* Calques empilés : ::before porte le portrait, les .glitch sont les bandes
-   décalées de la salve. Le masque vit sur les calques et non sur .portrait —
+   décalées de la salve. Le masque vit sur les calques et non sur .portrait -
    un masque sur le parent rognerait les décalages. */
 .portrait::before{content:''}
 .portrait::before,.portrait .glitch{
@@ -242,7 +242,7 @@ section{
    Salves brèves et rares, séparées par de longues pauses : le glitch
    doit surprendre, pas meubler. Tout le tirage (nombre de bandes,
    hauteur, position, décalage, teinte) vit dans le script en bas de
-   page — une boucle CSS, même longue, finit par se laisser reconnaître.
+   page - une boucle CSS, même longue, finit par se laisser reconnaître.
    Deux teintes seulement, toutes deux sombres : la bande noire creuse
    un trou dans la trame, la rouge sourd l'éteint. Rien de clair, le
    glitch mange l'image au lieu de l'éclairer. */
@@ -284,7 +284,7 @@ section{
 }
 /* L'allumage vit sur le parent, le balayage sur le laptop. Les deux
    étaient sur le même élément : passer la souris remplaçait `allumage`
-   par `balayage`, et la quitter rejouait l'allumage — l'écran semblait
+   par `balayage`, et la quitter rejouait l'allumage - l'écran semblait
    se couper à chaque sortie de survol. */
 section.in .laptop-scene{animation:allumage .9s steps(1,end)}
 @keyframes allumage{
@@ -396,7 +396,7 @@ a.row:hover .tags,a.row:hover .num{color:var(--noir)}
    `border-radius` + `overflow:hidden`. L'image porte en permanence un
    `filter` et, au survol, un `transform` : les deux la placent sur sa
    propre couche de composition. Le rognage arrondi d'un ancêtre est
-   alors appliqué par le compositeur, qui ne lisse pas les bords — d'où
+   alors appliqué par le compositeur, qui ne lisse pas les bords - d'où
    les angles en escalier. `clip-path`, lui, reste antialiasé.
    L'`overflow:hidden` est conservé : il borne la mise en page, le
    clip-path ne fait que dessiner le bord. */
@@ -420,7 +420,7 @@ a.row:hover .tags,a.row:hover .num{color:var(--noir)}
 .vignette figcaption{
   display:flex;justify-content:space-between;gap:12px;padding:14px 16px;
   font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  /* #7A7A7A sur --encre ne donne que 4.29:1 — sous le seuil pour
+  /* #7A7A7A sur --encre ne donne que 4.29:1 - sous le seuil pour
      du 10.5 px. Éclairci juste ce qu'il faut : 4.79:1. */
   color:#828282;border-top:1px solid var(--noir);
 }
@@ -467,7 +467,7 @@ a.row:hover .tags,a.row:hover .num{color:var(--noir)}
   letter-spacing:-.02em;color:var(--rouge);margin-bottom:12px}
 /* Au survol : la puce rouge se déploie et l'item glisse pour lui faire
    place. Transition sur la largeur d'un pseudo-élément, pas sur padding
-   du <li> — le filet du bas ne bouge pas. */
+   du <li> - le filet du bas ne bouge pas. */
 .col li{list-style:none;font-size:15px;color:var(--gris);padding:5px 0;
   border-bottom:1px solid var(--encre);display:flex;align-items:center;
   transition:color .35s var(--ease)}
@@ -484,7 +484,7 @@ a.row:hover .tags,a.row:hover .num{color:var(--noir)}
 /* `align-items:center` et non l'étirement par défaut : le nom de la boîte
    est en 17 px quand le reste de la ligne est en 13 px, donc la cellule du
    milieu est plus haute. Étirées, les deux autres colonnes calaient leur
-   texte en haut de la ligne — d'où l'impression d'un bloc non centré entre
+   texte en haut de la ligne - d'où l'impression d'un bloc non centré entre
    les deux filets, et d'une flèche décalée. */
 a.job{display:grid;grid-template-columns:130px 1fr auto;gap:20px;padding:20px 16px 20px 0;
   align-items:center;
@@ -495,11 +495,11 @@ a.job:hover{background:var(--rouge);color:var(--noir);padding-left:16px}
 a.job:hover b{color:var(--noir)}
 /* La flèche était en ::after sur le <b> : même invisible elle occupait
    sa largeur, ce qui décalait le point médian selon la longueur du nom.
-   Elle passe en absolu — zéro impact sur le flux. */
+   Elle passe en absolu - zéro impact sur le flux. */
 a.job{position:relative}
 /* Flèche dessinée, plus le caractère « ↗ ». Dans Space Mono ce glyphe ne
-   descend pas jusqu'à la ligne de base — mesuré, son centre d'encre est
-   5 px plus haut que celui du texte — donc centrer sa boîte ne le centre
+   descend pas jusqu'à la ligne de base - mesuré, son centre d'encre est
+   5 px plus haut que celui du texte - donc centrer sa boîte ne le centre
    pas, lui. Le tracé remplit son viewBox de façon symétrique : centrer la
    boîte suffit. La couleur suit `currentColor`, elle passe donc au noir
    sur la ligne survolée sans règle en plus. */
@@ -550,7 +550,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
 .contact .laptop{flex:0 0 auto;width:min(30vw,460px)}
 
 /* sur fond rouge le gris du libellé tombait à 2:1 de contraste */
-/* .6 donnait #6c1218 sur le rouge, soit 3.15:1 — sous le seuil pour du
+/* .6 donnait #6c1218 sur le rouge, soit 3.15:1 - sous le seuil pour du
    11 px. .85 monte à 4.61:1 en gardant le label en retrait. */
 .contact .label{color:var(--noir);opacity:.85}
 .contact h2{font-family:var(--display);font-weight:800;text-transform:uppercase;
@@ -564,7 +564,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
    Autant garder la couleur franche, la hiérarchie passe par la taille. */
 .contact .pied{
   /* Autant d'air sous le pied qu'entre le filet et lui. La section perd
-     donc son padding bas — sinon il s'ajoutait et le rouge continuait
+     donc son padding bas - sinon il s'ajoutait et le rouge continuait
      sur une centaine de pixels de vide. */
   margin-top:clamp(52px,9vh,110px);padding:20px 0;
   border-top:1px solid var(--noir);
@@ -578,7 +578,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
 .contact{padding-bottom:0}
 .contact .pied > :last-child{justify-self:end}
 /* L'œil inversé : sur le rouge, c'est le carré qui passe au noir et la
-   pupille au rouge. Fixe — il ne scrute que dans l'en-tête. */
+   pupille au rouge. Fixe - il ne scrute que dans l'en-tête. */
 .contact .pied .oeil{position:relative;display:block;width:16px;height:16px;background:var(--noir)}
 .contact .pied .oeil span{position:absolute;inset:31.25%;background:var(--rouge)}
 
@@ -607,7 +607,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
 
 /* ══ Mobile ══════════════════════════════════════════════════
    Le portrait ne disparaît plus : il passe au-dessus du titre, en
-   pleine largeur. Et les bornes basses des clamp remontent — sur un
+   pleine largeur. Et les bornes basses des clamp remontent - sur un
    écran de 390 px, 7vw ne faisait que 27 px et tout butait sur le
    minimum, d'où l'impression de miniature. */
 @media(max-width:860px){
@@ -623,7 +623,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
 
   /* Hauteur calée sur le viewport moins le bandeau : celui-ci doit être
      visible sans scroller, sinon on ne sait pas que la page continue.
-     100svh, pas 100vh — la barre d'URL mobile fausse vh. */
+     100svh, pas 100vh - la barre d'URL mobile fausse vh. */
   .hero{
     min-height:calc(100svh - 46px);padding-top:76px;padding-bottom:22px;
     justify-content:space-between;
@@ -680,7 +680,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
      trois lignes bancales */
   .contact .links{flex-direction:column;align-items:flex-start;gap:12px;font-size:12px}
   /* Aligné à gauche comme le reste de la colonne, et décollé des liens :
-     centré et large, il venait toucher le « CV — PDF ». */
+     centré et large, il venait toucher le « CV - PDF ». */
   .laptop-scene{padding:0;align-self:flex-start;margin-top:clamp(28px,7vw,52px)}
   .contact .laptop{width:min(58vw,260px)}
 
@@ -697,7 +697,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
   .langue,.loupe button{cursor:pointer}
   .carrousel,.vignette{cursor:auto}
   .portrait{filter:brightness(1)}
-  /* aucun état :hover atteignable au doigt — on neutralise pour éviter
+  /* aucun état :hover atteignable au doigt - on neutralise pour éviter
      les états « collés » après un tap */
   a.row:hover,a.job:hover{background:none;color:inherit;padding-left:12px}
   a.row:hover .tags,a.row:hover .num,a.job:hover b{color:var(--gris)}
@@ -711,7 +711,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
 /* ── Transition d'une page à l'autre ──────────────────────────
    Navigation entre deux documents de même origine : le navigateur
    photographie l'ancienne page et la nouvelle, puis interpole. La règle
-   doit exister des deux côtés — elle est donc reprise à l'identique dans
+   doit exister des deux côtés - elle est donc reprise à l'identique dans
    assets/case.css. Là où ce n'est pas encore implémenté, elle est
    ignorée et la navigation reste instantanée : rien d'autre à prévoir. */
 @view-transition{navigation:auto}
@@ -742,7 +742,7 @@ a.job > span:last-child{transition:padding-right .35s var(--ease)}
 </style>
 <script>
 // Les masques en url('assets/*.svg') sont bloqués en file:// (origine
-// opaque). On ne charge la version inlinée en data: URI — 448 Ko — que
+// opaque). On ne charge la version inlinée en data: URI - 448 Ko - que
 // dans ce cas précis. En HTTP les url() suffisent : rien à télécharger.
 if (location.protocol === 'file:') {
   document.write('<link rel="stylesheet" href="assets/masks.css">');
@@ -750,7 +750,7 @@ if (location.protocol === 'file:') {
 </script>
 <!-- Donnée structurée : elle relie le site à une personne, pas seulement à
      des mots-clés. C'est le signal utile sur une requête au nom. Rien ici
-     n'est décoratif — tout est vérifiable sur la page. -->
+     n'est décoratif - tout est vérifiable sur la page. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -775,7 +775,7 @@ if (location.protocol === 'file:') {
 
 <a class="logo" href="#" aria-label="Accueil"><span class="pupille"></span></a>
 <div class="status">
-  <span class="dot"></span><span data-en="Signal — Brest, FR">Signal — Brest, FR</span>
+  <span class="dot"></span><span data-en="Signal - Brest, FR">Signal - Brest, FR</span>
   <button class="langue" id="langue" type="button" aria-label="Language">EN</button>
 </div>
 
@@ -785,7 +785,7 @@ if (location.protocol === 'file:') {
 <section class="hero">
   <div class="hero-main">
     <div class="hero-text">
-      <div class="label" data-en="(001) — Portfolio">(001) — Portfolio</div>
+      <div class="label" data-en="(001) - Portfolio">(001) - Portfolio</div>
       <h1>Rayan<br>Adamczak</h1>
       <div class="sub">Product Designer</div>
     </div>
@@ -825,14 +825,14 @@ if (location.protocol === 'file:') {
 
 <!-- MANIFESTE -->
 <section class="manifeste">
-  <div class="label" data-en="(002) — Manifesto">(002) — Manifeste</div>
+  <div class="label" data-en="(002) - Manifesto">(002) - Manifeste</div>
   <p data-en="&lt;em&gt;User-centric&lt;/em&gt; solutions that serve the &lt;em&gt;business&lt;/em&gt; too.">Des solutions centrées <em>utilisateur</em>, qui servent aussi le <em>business.</em></p>
   <p class="manifeste-suite" data-en="Thanks to numerous experiences and solutions delivered, I developed a wide panel of skills: discovery, definition and design backed by customer insights.">Au fil des expériences et des projets livrés, j'ai développé un large éventail de compétences : discovery, définition et design, nourris par les insights clients.</p>
 </section>
 
 <!-- INDEX PROJETS -->
 <section>
-  <div class="label" data-en="(003) — Case studies">(003) — Case studies</div>
+  <div class="label" data-en="(003) - Case studies">(003) - Case studies</div>
   <div class="index">
     <!-- Du plus récent au plus ancien. Les projets perso pointent vers leur
          site ou leur fiche App Store, faute de page dédiée ici. -->
@@ -864,7 +864,7 @@ if (location.protocol === 'file:') {
       <span class="num">002</span>
       <div><h2>Retro</h2>
         <div class="tags" data-en="Electra · 3 weeks · Mobile · B2C">Electra · 3 semaines · Mobile · B2C</div></div>
-      <span class="num" data-en="33 % adoption — 1,000+ users">33 % d'adoption — 1 000+ utilisateurs</span>
+      <span class="num" data-en="33 % adoption - 1,000+ users">33 % d'adoption - 1 000+ utilisateurs</span>
     </a>
     <a class="row" href="case-parking-access" data-peek>
       <span class="num">001</span>
@@ -877,7 +877,7 @@ if (location.protocol === 'file:') {
 
 <!-- APERÇUS -->
 <section>
-  <div class="label" data-en="(004) — Previews">(004) — Aperçus</div>
+  <div class="label" data-en="(004) - Previews">(004) - Aperçus</div>
   <div class="carrousel" id="carrousel">
     <figure class="vignette"><div class="cadre">
       <img src="assets/carrousel/1.webp" alt="Parking Access" loading="lazy" draggable="false" width="1600" height="900"></div>
@@ -899,7 +899,7 @@ if (location.protocol === 'file:') {
 
 <!-- EXPERTISES -->
 <section>
-  <div class="label" data-en="(005) — Expertise">(005) — Expertises</div>
+  <div class="label" data-en="(005) - Expertise">(005) - Expertises</div>
   <div class="cols">
     <div class="col"><h3>Discovery</h3><ul>
       <li data-en="User research">User research</li>
@@ -921,26 +921,26 @@ if (location.protocol === 'file:') {
 
 <!-- PARCOURS -->
 <section>
-  <div class="label" data-en="(006) — Career">(006) — Parcours</div>
+  <div class="label" data-en="(006) - Career">(006) - Parcours</div>
   <div class="index">
     <a class="job" href="https://www.digifeel.io/" target="_blank" rel="noopener">
-      <span data-en="2026 — now">2026 — auj.</span>
+      <span data-en="2026 - now">2026 - auj.</span>
       <span><b>Digifeel</b> · <span data-en="E-commerce &amp; SaaS for merchants">E-commerce &amp; SaaS commerçants</span></span>
       <span>Product Designer</span></a>
     <div class="job">
-      <span data-en="2025 — now">2025 — auj.</span>
+      <span data-en="2025 - now">2025 - auj.</span>
       <span><b>Surrealiste Studio</b> · <span data-en="SaaS &amp; landing page studio">Studio SaaS &amp; landing</span></span>
       <span data-en="Co-founder &amp; Designer">Co-fondateur &amp; Designer</span></div>
     <a class="job" href="https://brandappart.com/" target="_blank" rel="noopener">
-      <span>2025 — 2026</span>
+      <span>2025 - 2026</span>
       <span><b>Brand Appart</b> · <span data-en="Branding &amp; product agency">Agence branding &amp; produit</span></span>
       <span>Product Designer</span></a>
     <a class="job" href="https://www.go-electra.com/" target="_blank" rel="noopener">
-      <span>2022 — 2024</span>
+      <span>2022 - 2024</span>
       <span><b>Electra</b> · <span class="long" data-en="Charging stations for electric vehicles">Stations de recharge pour voitures électriques</span><span class="court" data-en="EV charging stations">Stations de recharge pour EV</span></span>
       <span>Product Designer</span></a>
     <a class="job" href="https://neocity.fr/" target="_blank" rel="noopener">
-      <span>2019 — 2022</span>
+      <span>2019 - 2022</span>
       <span><b>Neocity</b> · <span data-en="Mobile apps for cities">Apps mobiles pour les villes</span></span>
       <span>First Product Designer</span></a>
   </div>
@@ -948,14 +948,14 @@ if (location.protocol === 'file:') {
 
 <!-- CONTACT -->
 <section class="contact">
-  <div class="label" data-en="(007) — Contact">(007) — Contact</div>
+  <div class="label" data-en="(007) - Contact">(007) - Contact</div>
   <div class="contact-main">
     <div>
       <h2 data-en="Let's talk&lt;br&gt;about your&lt;br&gt;product.">Parlons<br>de votre<br>produit.</h2>
       <div class="links">
         <a href="mailto:rayan.adamczak@gmail.com">rayan.adamczak@gmail.com</a>
         <a href="https://www.linkedin.com/in/rayan-adamczak/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://drive.google.com/file/d/14xStFrOXYYaxbtZPUauzJ34D3LQgsAnT/view" target="_blank" rel="noopener" data-en="Resume — PDF">CV — PDF</a>
+        <a href="https://drive.google.com/file/d/14xStFrOXYYaxbtZPUauzJ34D3LQgsAnT/view" target="_blank" rel="noopener" data-en="Resume - PDF">CV - PDF</a>
       </div>
     </div>
     <div class="laptop-scene">
@@ -1001,7 +1001,7 @@ window.ARIA = {
 // curseur
 const cur=document.getElementById('cur'), peek=document.getElementById('peek');
 // Une seule écriture par image. Les événements pointeur arrivent plus vite
-// que les images — jusqu'à 125 Hz sur une souris à haute fréquence — et
+// que les images - jusqu'à 125 Hz sur une souris à haute fréquence - et
 // `left`/`top` sur .peek forcent un calcul de mise en page à chaque fois.
 // C'est ce qui saccadait le glissement du carrousel, qui se joue dans la
 // même boucle d'événements.
@@ -1046,7 +1046,7 @@ let tire = false, xDepart = 0, scrollDepart = 0;
 let aDragge = false;
 // Pas de `setPointerCapture` ici : tant qu'un pointeur est capturé, le
 // `click` qui suit est redirigé vers l'élément capturant. Il arrivait donc
-// sur le carrousel et jamais sur la vignette — la visionneuse ne s'ouvrait
+// sur le carrousel et jamais sur la vignette - la visionneuse ne s'ouvrait
 // pas. On suit le pointeur sur la fenêtre, ce qui couvre aussi le cas du
 // glissement relâché hors du carrousel.
 car.addEventListener('pointerdown', e => {
@@ -1112,7 +1112,7 @@ const zone = document.querySelector('.contact');
 // l'autre bout de la section renverrait un angle absurde.
 // Le repère vient de .laptop-scene et non du laptop : getBoundingClientRect
 // d'un élément pivoté renvoie sa boîte transformée, qui bouge à chaque
-// image — le suivi se serait mis à osciller tout seul.
+// image - le suivi se serait mis à osciller tout seul.
 const borne = v => Math.max(-1, Math.min(1, v));
 zone.addEventListener('pointermove', e => {
   const r = scene.getBoundingClientRect();
@@ -1161,7 +1161,7 @@ function ouvre(i){
   }
   loupe.setAttribute('open', '');
   // `visibility` bascule sans délai à l'ouverture (voir la transition),
-  // donc le bouton est focusable immédiatement — pas besoin d'attendre
+  // donc le bouton est focusable immédiatement - pas besoin d'attendre
   // une frame, qui serait gelée si l'onglet n'est pas au premier plan.
   btnFermer.focus();
 }
@@ -1232,8 +1232,8 @@ if (matchMedia('(hover:none)').matches) {
   }
 
   // Cadencé sur setTimeout et non sur requestAnimationFrame : rAF est
-  // suspendu partout où rien n'est composité — onglet en arrière-plan,
-  // volet d'aperçu — et la salve n'y partirait jamais.
+  // suspendu partout où rien n'est composité - onglet en arrière-plan,
+  // volet d'aperçu - et la salve n'y partirait jamais.
   function salve() {
     let reste = Math.round(alea(4, 8));
     let precedente = performance.now();
@@ -1259,13 +1259,13 @@ if (matchMedia('(hover:none)').matches) {
   addEventListener('visibilitychange', () => { if (document.hidden) eteint(); });
 })();
 
-// reveal au scroll — on observe les <section>, pas leurs enfants :
+// reveal au scroll - on observe les <section>, pas leurs enfants :
 // un enfant en clip-path:inset(0 0 100%) a une zone d'intersection nulle,
 // l'observer ne se déclencherait jamais.
 document.documentElement.classList.add('js-reveal');
 // Retour depuis une étude de cas : la page est déjà connue, on la rend
 // telle quelle. Sans ça, la transition entre documents photographierait
-// une page vide — tout est masqué tant que l'observer n'a pas répondu —
+// une page vide - tout est masqué tant que l'observer n'a pas répondu -
 // et le retour donnerait un écran blanc suivi d'une réapparition.
 // L'entrée reste animée sur une vraie première arrivée.
 const nav = performance.getEntriesByType('navigation')[0];

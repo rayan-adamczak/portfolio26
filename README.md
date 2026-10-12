@@ -1,4 +1,4 @@
-# Portfolio — Rayan Adamczak
+# Portfolio - Rayan Adamczak
 
 Product Designer. Brest, FR.
 
@@ -7,14 +7,14 @@ rouge et noir, trame 1-bit, PP Neue Machina + Space Grotesk.
 
 ## Structure
 
-- `index.html` — accueil
-- `case-*.html` — études de cas
-- `assets/case.css`, `assets/case.js` — feuille et script communs aux études de cas
-- `assets/carrousel/` — visuels du carrousel
-- `assets/cases/` — visuels des études de cas
-- `assets/masks.css` — les deux SVG tramés inlinés en data: URI, pour que
+- `index.html` - accueil
+- `case-*.html` - études de cas
+- `assets/case.css`, `assets/case.js` - feuille et script communs aux études de cas
+- `assets/carrousel/` - visuels du carrousel
+- `assets/cases/` - visuels des études de cas
+- `assets/masks.css` - les deux SVG tramés inlinés en data: URI, pour que
   les masques fonctionnent aussi en `file://`
-- `DA.md` — la direction artistique écrite
+- `DA.md` - la direction artistique écrite
 
 ## Localisation
 

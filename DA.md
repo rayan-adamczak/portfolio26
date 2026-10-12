@@ -1,5 +1,5 @@
-# MATÉRIEL — Direction artistique
-Portfolio Rayan Adamczak — Product Designer
+# MATÉRIEL - Direction artistique
+Portfolio Rayan Adamczak - Product Designer
 
 ---
 
@@ -8,7 +8,7 @@ Portfolio Rayan Adamczak — Product Designer
 **« Le design comme matériau brut. »**
 
 Pas de portfolio-vitrine lisse. Un site qui ressemble à un **outil** : dense, technique, assumé.
-La DA vient de l'affiche punk / du print risographié / du terminal — un seul rouge, du noir, de la
+La DA vient de l'affiche punk / du print risographié / du terminal - un seul rouge, du noir, de la
 trame 1-bit, et une typo qui gueule.
 
 Trois principes non négociables :
@@ -17,7 +17,7 @@ Trois principes non négociables :
 2. **Tout est indexé.** Numéros (`001`, `002`), labels mono en majuscules, métadonnées visibles.
    Le site se lit comme une fiche technique, pas comme une plaquette.
 3. **L'image est traitée, jamais brute.** Toute photo/screenshot passe par un filtre de tramage
-   (dither 1-bit rouge sur noir). Ça unifie des projets visuellement hétérogènes — ton vrai problème
+   (dither 1-bit rouge sur noir). Ça unifie des projets visuellement hétérogènes - ton vrai problème
    aujourd'hui : Electra, Neocity et brand appart n'ont rien en commun graphiquement.
 
 ---
@@ -30,13 +30,13 @@ Trois principes non négociables :
 | `--encre` | `#141414` | Surfaces, cartes, séparateurs |
 | `--rouge` | `#FF1F27` | Accent unique : titres, liens, états actifs, fills d'inversion |
 | `--rouge-sourd` | `#8F0F14` | Trames, ombres colorées, états désactivés |
-| `--craie` | `#F2F0EC` | Texte courant (jamais du blanc pur — trop dur sur noir) |
+| `--craie` | `#F2F0EC` | Texte courant (jamais du blanc pur - trop dur sur noir) |
 | `--gris` | `#7A7A7A` | Métadonnées, labels, texte secondaire |
 
 **Règles.**
 - Ratio cible ≈ 70 % noir / 22 % craie / 8 % rouge. Le rouge doit rester rare pour rester violent.
 - Une seule section entièrement rouge dans toute la page (le « bloc contact » de la Frame 6). C'est le
-  point d'orgue — s'il y en a deux, il n'y en a plus.
+  point d'orgue - s'il y en a deux, il n'y en a plus.
 - Contraste : `--rouge` sur `--noir` = 4.8:1 → OK pour du texte ≥ 18px et du gros titre, **pas** pour du
   corps de texte. Le body est toujours en `--craie`.
 
@@ -44,9 +44,9 @@ Trois principes non négociables :
 
 ## 3. Typographie
 
-**PP Neue Machina Ultrabold** — display. Uppercase, tracking `-0.03em`, line-height `0.9`.
-**Space Grotesk** — corps de texte, UI, navigation.
-**Space Mono** — labels, métadonnées, numéros d'index, tags.
+**PP Neue Machina Ultrabold** - display. Uppercase, tracking `-0.03em`, line-height `0.9`.
+**Space Grotesk** - corps de texte, UI, navigation.
+**Space Mono** - labels, métadonnées, numéros d'index, tags.
 
 > ⚠️ PP Neue Machina est une licence payante (Pangram Pangram, ~50 € desktop + webfont). À prévoir.
 > Alternative gratuite si besoin : Space Grotesk Bold en uppercase très serré, ou Archivo Expanded Black.
@@ -63,7 +63,7 @@ Trois principes non négociables :
 | `label` | `12px / 1.2`, `+0.12em`, uppercase | Space Mono |
 
 **Règle de mise en page héritée de tes frames :** titre display en rouge, sous-titre en Space Grotesk
-regular juste dessous, aligné à gauche sur la même marge optique. Ce duo se répète partout — c'est la
+regular juste dessous, aligné à gauche sur la même marge optique. Ce duo se répète partout - c'est la
 signature de composition.
 
 ---
@@ -85,7 +85,7 @@ signature de composition.
 2. **Inversion au hover.** Bloc noir → bloc rouge plein, texte passe en noir (exactement ta Frame 6).
    C'est ton interaction principale, utilisée partout : liens, cartes projet, bouton contact.
 3. **Index numéroté.** Chaque projet porte son numéro `(001)` en Space Mono à gauche.
-4. **Marquee.** Bandeau défilant rouge `PRODUCT DESIGNER — AVAILABLE FOR FREELANCE — NEVERS, FR —`
+4. **Marquee.** Bandeau défilant rouge `PRODUCT DESIGNER - AVAILABLE FOR FREELANCE - NEVERS, FR -`
    en séparateur de sections. Une seule occurrence par page.
 5. **Sticky status.** Pastille `● AVAILABLE` fixe en haut à droite, rouge pulsé. Récupère l'info clé de
    ton Notion et la rend permanente.
@@ -102,13 +102,13 @@ signature de composition.
 ```
 
 **Home**
-1. Hero — `PRODUCT DESIGNER` display rouge / `rayan adamczak` dessous / portrait tramé
-2. Manifeste — 3 lignes max, gros corps de texte
-3. Index projets — **liste, pas grille de cartes**. Une ligne par projet, hover = preview tramée qui suit
+1. Hero - `PRODUCT DESIGNER` display rouge / `rayan adamczak` dessous / portrait tramé
+2. Manifeste - 3 lignes max, gros corps de texte
+3. Index projets - **liste, pas grille de cartes**. Une ligne par projet, hover = preview tramée qui suit
    le curseur. Plus dense, plus premium, et ça marche même avec 3 projets (ton cas).
-4. Expertises — user research / design system / UX-UI, en 3 colonnes filetées
-5. Parcours — timeline mono, une ligne par boîte
-6. Contact — le bloc rouge plein
+4. Expertises - user research / design system / UX-UI, en 3 colonnes filetées
+5. Parcours - timeline mono, une ligne par boîte
+6. Contact - le bloc rouge plein
 
 **Case study (template unique, appliqué à tes 3 projets)**
 `Contexte → Rôle & durée → Problème → Recherche → Décisions de design → Impact chiffré → Next`

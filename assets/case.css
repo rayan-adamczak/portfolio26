@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   MATÉRIEL — feuille commune aux pages de case study.
+   MATÉRIEL - feuille commune aux pages de case study.
    Reprend les tokens de l'index, ajoute la typographie d'article.
    ══════════════════════════════════════════════════════════════ */
 
@@ -47,7 +47,7 @@ img,video{max-width:100%;display:block}
 }
 /* Voir index.html : `difference` garde le curseur lisible sur le rouge
    comme sur le noir. Il n'est neutralisé qu'au-dessus d'un visuel importé,
-   où le rouge s'inverserait en cyan — classe posée par case.js. */
+   où le rouge s'inverserait en cyan - classe posée par case.js. */
 .cur{
   position:fixed;top:0;left:0;width:10px;height:10px;background:var(--rouge);
   z-index:9999;pointer-events:none;mix-blend-mode:difference;
@@ -224,14 +224,14 @@ figure{margin-top:clamp(30px,4vh,56px);max-width:var(--texte-maxw)}
 /* Le visuel se redimensionne lui-même au lieu d'être posé dans une boîte
    figée. L'ancienne version combinait `width:100%`, une hauteur plafonnée
    et `object-fit:contain` : la boîte gardait sa taille pleine, l'image
-   flottait en haut et laissait une grande zone d'encre vide en dessous —
+   flottait en haut et laissait une grande zone d'encre vide en dessous -
    et comme l'arrondi découpait la boîte et non l'image, le visuel gardait
    ses angles droits à l'intérieur du cadre. Avec largeur et hauteur libres,
    la boîte épouse l'image : plus de vide, et l'arrondi rogne le visuel. */
 /* `clip-path` en plus du `border-radius` : la révélation au scroll pose un
    clip-path et une transition d'opacité sur les blocs, ce qui place leur
    contenu sur une couche de composition. Le rognage arrondi y est alors
-   appliqué par le compositeur, qui ne lisse pas les bords — les angles
+   appliqué par le compositeur, qui ne lisse pas les bords - les angles
    ressortent en escalier. `clip-path` reste antialiasé. */
 figure img,figure video{
   display:block;max-width:100%;width:auto;height:auto;margin-inline:auto;
@@ -330,7 +330,7 @@ figcaption{
   background:var(--rouge);color:var(--noir);
   padding:clamp(56px,9vh,120px) max(var(--marge),calc((100% - var(--maxw))/2 + var(--marge)));
 }
-/* .6 donnait #6c1218 sur le rouge, soit 3.15:1 — sous le seuil pour du
+/* .6 donnait #6c1218 sur le rouge, soit 3.15:1 - sous le seuil pour du
    11 px. .85 monte à 4.61:1 en gardant le label en retrait. */
 .contact .label{color:var(--noir);opacity:.85}
 .contact h2{

@@ -1,4 +1,4 @@
-/* Généré par un script — masques inlinés en data: URI.
+/* Généré par un script - masques inlinés en data: URI.
    Raison : un mask-image qui pointe vers un fichier .svg est bloqué
    en file:// (origine opaque). En prod (servi en http) les url('assets/*.svg')
    du CSS principal suffisent et ce fichier devient inutile. */
